@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C0392A4E-3772-4EA7-A648-18CBF74828C1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>snap2life demo IR</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D644F45D-D591-4A4F-916C-7B57D4B93FF2</key>
+		<string>http://192.168.100.118/svn/mosesrep/gryphos/trunk/S2LAR_IOS_2.0</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>snap2life demo IR_1.0/snap2life demo IR.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D644F45D-D591-4A4F-916C-7B57D4B93FF2</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>D644F45D-D591-4A4F-916C-7B57D4B93FF2</key>
+		<string>http://192.168.100.118/svn/mosesrep</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://192.168.100.118/svn/mosesrep/gryphos/trunk/S2LAR_IOS_2.0/snap2life%20demo%20IR_1.0/snap2life%20demo%20IR.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D644F45D-D591-4A4F-916C-7B57D4B93FF2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>gryphos/branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
+			<string>gryphos/tags</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>gryphos/trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D644F45D-D591-4A4F-916C-7B57D4B93FF2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PROJECTS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

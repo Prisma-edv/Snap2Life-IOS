@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ObjectDef.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ObjectDef</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ObjectDef/setInfos:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Infos *infos</Declaration>
+			
+			
+			<Anchor>//api/name/infos</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ObjectDef/infos</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Infos *infos</Declaration>
+			
+			
+			<Anchor>//api/name/infos</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ObjectDef/infos</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Infos *infos</Declaration>
+			
+			
+			<Anchor>//api/name/infos</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ObjectDef/setDatagroups:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Datagroups *datagroups</Declaration>
+			
+			
+			<Anchor>//api/name/datagroups</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ObjectDef/datagroups</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Datagroups *datagroups</Declaration>
+			
+			
+			<Anchor>//api/name/datagroups</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ObjectDef/datagroups</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Datagroups *datagroups</Declaration>
+			
+			
+			<Anchor>//api/name/datagroups</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ObjectDef/setFeaturegroups:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Featuregroups *featuregroups</Declaration>
+			
+			
+			<Anchor>//api/name/featuregroups</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ObjectDef/featuregroups</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Featuregroups *featuregroups</Declaration>
+			
+			
+			<Anchor>//api/name/featuregroups</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ObjectDef/featuregroups</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Featuregroups *featuregroups</Declaration>
+			
+			
+			<Anchor>//api/name/featuregroups</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ObjectDef/setExtras:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Extras *extras</Declaration>
+			
+			
+			<Anchor>//api/name/extras</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ObjectDef/extras</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Extras *extras</Declaration>
+			
+			
+			<Anchor>//api/name/extras</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ObjectDef/extras</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ObjectDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Extras *extras</Declaration>
+			
+			
+			<Anchor>//api/name/extras</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+        
+	</File>
+</Tokens>

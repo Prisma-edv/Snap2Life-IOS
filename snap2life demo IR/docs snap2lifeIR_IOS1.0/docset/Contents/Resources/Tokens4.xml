@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/S2LIRRequestMaker.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/S2LIRRequestMaker</TokenIdentifier>
+			<Abstract type="html">S2LIRRequestMaker is a singleton you can refer to this instance as [S2LIRRequestMaker sharedClient];</Abstract>
+			<DeclaredIn>S2LIRRequestMaker.h</DeclaredIn>
+            
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S2LIRRequestMaker/setAdo:</TokenIdentifier>
+			<Abstract type="html">    This Property store the metadata for the image
+     </Abstract>
+			<DeclaredIn>S2LIRRequestMaker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) AppDataObject *ado</Declaration>
+			
+			
+			<Anchor>//api/name/ado</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S2LIRRequestMaker/ado</TokenIdentifier>
+			<Abstract type="html">    This Property store the metadata for the image
+     </Abstract>
+			<DeclaredIn>S2LIRRequestMaker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) AppDataObject *ado</Declaration>
+			
+			
+			<Anchor>//api/name/ado</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/S2LIRRequestMaker/ado</TokenIdentifier>
+			<Abstract type="html">    This Property store the metadata for the image
+     </Abstract>
+			<DeclaredIn>S2LIRRequestMaker.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) AppDataObject *ado</Declaration>
+			
+			
+			<Anchor>//api/name/ado</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S2LIRRequestMaker/recordForMatch:title:comment:linksPath:success:failure:</TokenIdentifier>
+			<Abstract type="html">Record for match
+     
+     This method send an UIImage to the server to record the image in the server database.
+     the server answer with an XML.
+     You can deserialize the XML in an ObjectDef or an ErrorDef as the provided example
+     
+     S2LIRRequestMaker *requestMaker = [S2LIRRequestMaker sharedClient];
+     [requestMaker recordForMatch:imageView.image title:putKey.text comment:putComment.text linksPath:links success:^(NSURLRequest request, NSHTTPURLResponse response, DDXMLDocument *XMLDocument) {
+     
+     S2LSerializerAPI2 *serializer = [[S2LSerializerAPI2 alloc] init];
+     NSObject *obj = [serializer deserializeObjectDef:XMLDocument];
+     
+     if (obj == nil) {
+        obj = [serializer deserializeError:XMLDocument];
+     }
+     if([obj isKindOfClass:[ObjectDef class]]){
+        NSLog(@&quot;THE SERVER STORED THE IMAGE&quot;);
+     }else{
+        NSLog(@&quot;THE SERVER DON&apos;T STORED THE IMAGE&quot;);
+     }
+     
+     } failure:^(NSURLRequest request, NSHTTPURLResponse response, NSError error, DDXMLDocument XMLDocument) {
+     }];
+     </Abstract>
+			<DeclaredIn>S2LIRRequestMaker.h</DeclaredIn>
+			
+			<Declaration>- (void)recordForMatch:(UIImage *)snap title:(NSString *)title comment:(NSString *)comment linksPath:(NSArray *)linksPath success:(void ( ^ ) ( NSURLRequest *request , NSHTTPURLResponse *response , DDXMLDocument *XMLDocument ))success failure:(void ( ^ ) ( NSURLRequest *request , NSHTTPURLResponse *response , NSError *error , DDXMLDocument *XMLDocument ))failure</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>snap</Name>
+					<Abstract type="html">this is UIImage to send to the server</Abstract>
+				</Parameter><Parameter>
+					<Name>title</Name>
+					<Abstract type="html">the image name string to record in the database</Abstract>
+				</Parameter><Parameter>
+					<Name>comment</Name>
+					<Abstract type="html">a comment of the image</Abstract>
+				</Parameter><Parameter>
+					<Name>linksPath</Name>
+					<Abstract type="html">is an array of dictionaries
+     [NSDictionary dictionaryWithObjectsAndKeys:putUrl.text,@&quot;link&quot;,putTitle.text,@&quot;title&quot;, nil];
+     you can send a maximum of ten links and labels.</Abstract>
+				</Parameter><Parameter>
+					<Name>success</Name>
+					<Abstract type="html">this is a block if the http request finished with success</Abstract>
+				</Parameter><Parameter>
+					<Name>failure</Name>
+					<Abstract type="html">this is a block if the http request failed
+     
+     </Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/recordForMatch:title:comment:linksPath:success:failure:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/S2LIRRequestMaker/evaluateBestMatch:success:failure:</TokenIdentifier>
+			<Abstract type="html">Evaluate best match
+     
+    This method send an UIImage to the server for image recognition
+    the server answer with an XML.
+    You can deserialize the XML in an ObjectDef or an ErrorDef as the provided example
+     
+     
+     S2LIRRequestMaker *requestMaker = [S2LIRRequestMaker sharedClient];
+     [requestMaker evaluateBestMatch:snap success:^(NSURLRequest request, NSHTTPURLResponse response, DDXMLDocument *XMLDocument) {
+     
+     
+     S2LSerializerAPI2 *serializer = [[S2LSerializerAPI2 alloc] init];
+     NSObject *obj = [serializer deserializeObjectDef:XMLDocument];
+     if (obj == nil) {
+     obj = [serializer deserializeError:XMLDocument];
+     }
+     if([obj isKindOfClass:[ObjectDef class]]){
+        NSLog(@&quot;THE SERVER RECOGNIZE THE IMAGE&quot;);
+     }else{
+        NSLog(@&quot;THE SERVER DON&apos;T RECOGNIZE THE IMAGE&quot;);
+     }
+     } failure:^(NSURLRequest request, NSHTTPURLResponse response, NSError error, DDXMLDocument XMLDocument) {
+     
+     }];
+     </Abstract>
+			<DeclaredIn>S2LIRRequestMaker.h</DeclaredIn>
+			
+			<Declaration>- (void)evaluateBestMatch:(UIImage *)snap success:(void ( ^ ) ( NSURLRequest *request , NSHTTPURLResponse *response , DDXMLDocument *XMLDocument ))success failure:(void ( ^ ) ( NSURLRequest *request , NSHTTPURLResponse *response , NSError *error , DDXMLDocument *XMLDocument ))failure</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>snap</Name>
+					<Abstract type="html">this is UIImage to send to the server</Abstract>
+				</Parameter><Parameter>
+					<Name>success</Name>
+					<Abstract type="html">this is a block if the http request finished with success</Abstract>
+				</Parameter><Parameter>
+					<Name>failure</Name>
+					<Abstract type="html">this is a block if the http request failed
+
+     </Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/evaluateBestMatch:success:failure:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/S2LIRRequestMaker/sharedClient</TokenIdentifier>
+			<Abstract type="html">    Public Method it returns always the same instance for the S2LIRRequestMaker</Abstract>
+			<DeclaredIn>S2LIRRequestMaker.h</DeclaredIn>
+			
+			<Declaration>+ (S2LIRRequestMaker *)sharedClient</Declaration>
+			
+			
+			<Anchor>//api/name/sharedClient</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+        
+	</File>
+</Tokens>

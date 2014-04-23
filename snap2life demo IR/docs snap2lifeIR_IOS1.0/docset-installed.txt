@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/astilo1/Library/Developer/Shared/Documentation/DocSets/de.prisma.Snap2LifeIR_IOS1.0.docset
+Time: 2013-11-21 15:57:58 +0000

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ErrorDef.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ErrorDef</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ErrorDef.h</DeclaredIn>
+            
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ErrorDef/setFields:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ErrorDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Fields *fields</Declaration>
+			
+			
+			<Anchor>//api/name/fields</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ErrorDef/fields</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ErrorDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Fields *fields</Declaration>
+			
+			
+			<Anchor>//api/name/fields</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ErrorDef/fields</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>ErrorDef.h</DeclaredIn>
+			
+			<Declaration>@property (nonatomic, strong) Fields *fields</Declaration>
+			
+			
+			<Anchor>//api/name/fields</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+        
+	</File>
+</Tokens>
