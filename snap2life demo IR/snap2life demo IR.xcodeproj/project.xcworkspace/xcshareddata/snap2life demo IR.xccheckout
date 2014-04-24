@@ -5,47 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>525AA82F-9BEC-4B38-B6AE-B842202D24A7</string>
+	<string>3F463404-025F-48CE-B7B4-F454CDF76FA6</string>
 	<key>IDESourceControlProjectName</key>
 	<string>snap2life demo IR</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E44D5572-D5F8-42F3-93FD-A87E4393F6C4</key>
-		<string>http://192.168.100.118/svn/mosesrep/gryphos/trunk/S2LAR_IOS_2.0</string>
+		<key>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</key>
+		<string>https://github.com/snap2life/IOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>snap2life demo IR/snap2life demo IR.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E44D5572-D5F8-42F3-93FD-A87E4393F6C4</key>
+		<key>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</key>
 		<string>../../..</string>
 	</dict>
-	<key>IDESourceControlProjectRepositoryRootDictionary</key>
-	<dict>
-		<key>E44D5572-D5F8-42F3-93FD-A87E4393F6C4</key>
-		<string>http://192.168.100.118/svn/mosesrep</string>
-	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>http://192.168.100.118/svn/mosesrep/gryphos/trunk/S2LAR_IOS_2.0/snap2life%20demo%20IR/snap2life%20demo%20IR.xcodeproj</string>
+	<string>https://github.com/snap2life/IOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E44D5572-D5F8-42F3-93FD-A87E4393F6C4</string>
+	<string>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
-			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
-			<string>gryphos/branches</string>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.subversion</string>
-			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
-			<string>gryphos/tags</string>
-			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
-			<string>gryphos/trunk</string>
+			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E44D5572-D5F8-42F3-93FD-A87E4393F6C4</string>
+			<string>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</string>
 			<key>IDESourceControlWCCName</key>
-			<string>PROJECTS</string>
+			<string>IOS</string>
 		</dict>
 	</array>
 </dict>

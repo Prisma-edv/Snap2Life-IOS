@@ -55,7 +55,7 @@
 	
 	<option value="//api/name/evaluateBestMatch:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- evaluateBestMatch:success:failure:</option>
 	
-	<option value="//api/name/recordForMatch:title:comment:linksPath:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- recordForMatch:title:comment:linksPath:success:failure:</option>
+	<option value="//api/name/recordForMatch:title:comment:description:linksPath:success:failure:">&nbsp;&nbsp;&nbsp;&nbsp;- recordForMatch:title:comment:description:linksPath:success:failure:</option>
 	
 	
 	
@@ -99,7 +99,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/evaluateBestMatch:success:failure:">evaluateBestMatch:success:failure:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recordForMatch:title:comment:linksPath:success:failure:">recordForMatch:title:comment:linksPath:success:failure:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/recordForMatch:title:comment:description:linksPath:success:failure:">recordForMatch:title:comment:description:linksPath:success:failure:</a></span></li>
 	
 </ul></li>
 
@@ -162,7 +162,7 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/recordForMatch:title:comment:linksPath:success:failure:">&ndash;&nbsp;recordForMatch:title:comment:linksPath:success:failure:</a></code>
+		<code><a href="#//api/name/recordForMatch:title:comment:description:linksPath:success:failure:">&ndash;&nbsp;recordForMatch:title:comment:description:linksPath:success:failure:</a></code>
 	</span>
 	
 	
@@ -362,8 +362,8 @@ You can deserialize the XML in an ObjectDef or an ErrorDef as the provided examp
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/recordForMatch:title:comment:linksPath:success:failure:" title="recordForMatch:title:comment:linksPath:success:failure:"></a>
-	<h3 class="subsubtitle method-title">recordForMatch:title:comment:linksPath:success:failure:</h3>
+	<a name="//api/name/recordForMatch:title:comment:description:linksPath:success:failure:" title="recordForMatch:title:comment:description:linksPath:success:failure:"></a>
+	<h3 class="subsubtitle method-title">recordForMatch:title:comment:description:linksPath:success:failure:</h3>
 	
 	
 	
@@ -375,7 +375,7 @@ You can deserialize the XML in an ObjectDef or an ErrorDef as the provided examp
  You can deserialize the XML in an ObjectDef or an ErrorDef as the provided example
 
  S2LIRRequestMaker *requestMaker = [S2LIRRequestMaker sharedClient];
- [requestMaker recordForMatch:imageView.image title:putKey.text comment:putComment.text linksPath:links success:^(NSURLRequest *request, NSHTTPURLResponse *response, DDXMLDocument *XMLDocument) {
+ [requestMaker recordForMatch:imageView.image title:putKey.text comment:putComment.text description:description.text linksPath:links success:^(NSURLRequest *request, NSHTTPURLResponse *response, DDXMLDocument *XMLDocument) {
 
  S2LSerializerAPI2 *serializer = [[S2LSerializerAPI2 alloc] init];
  NSObject *obj = [serializer deserializeObjectDef:XMLDocument];
@@ -396,7 +396,7 @@ You can deserialize the XML in an ObjectDef or an ErrorDef as the provided examp
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)recordForMatch:(UIImage *)<em>snap</em> title:(NSString *)<em>title</em> comment:(NSString *)<em>comment</em> linksPath:(NSArray *)<em>linksPath</em> success:(void ( ^ ) ( NSURLRequest *request , NSHTTPURLResponse *response , DDXMLDocument *XMLDocument ))<em>success</em> failure:(void ( ^ ) ( NSURLRequest *request , NSHTTPURLResponse *response , NSError *error , DDXMLDocument *XMLDocument ))<em>failure</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (void)recordForMatch:(UIImage *)<em>snap</em> title:(NSString *)<em>title</em> comment:(NSString *)<em>comment</em> description:(NSString *)<em>desc</em> linksPath:(NSArray *)<em>linksPath</em> success:(void ( ^ ) ( NSURLRequest *request , NSHTTPURLResponse *response , DDXMLDocument *XMLDocument ))<em>success</em> failure:(void ( ^ ) ( NSURLRequest *request , NSHTTPURLResponse *response , NSError *error , DDXMLDocument *XMLDocument ))<em>failure</em></code></div>
 
     
 	
@@ -433,6 +433,11 @@ You can deserialize the XML in an ObjectDef or an ErrorDef as the provided examp
 		<dl class="argument-def parameter-def">
 			<dt><em>failure</em></dt>
 			<dd><p>this is a block if the http request failed</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>description</em></dt>
+			<dd><p>a description of the image</p></dd>
 		</dl>
 		
 	</div>
@@ -472,7 +477,7 @@ You can deserialize the XML in an ObjectDef or an ErrorDef as the provided examp
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2013 Snap2Life. All rights reserved. (Last updated: 2013-11-21)</span><br />
+						<p><span class="copyright">&copy; 2014 Snap2Life. All rights reserved. (Last updated: 2014-04-24)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
