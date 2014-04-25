@@ -1,0 +1,20 @@
+//
+//  S2LCommunitySnapDef.m
+//  snap2life suite
+//
+//  Created by iOS on 12.12.13.
+//  Copyright (c) 2013 Prisma Gmbh. All rights reserved.
+//
+
+#import "S2LCommunitySnapDef.h"
+
+@implementation S2LCommunitySnapDef
+
+@synthesize snapId,snapperId,value;
+
+-(NSString*)description
+{
+    return [NSString stringWithFormat:@"snapId:%@\nsnapperID:%@",snapId,snapperId];
+}
+
+@end

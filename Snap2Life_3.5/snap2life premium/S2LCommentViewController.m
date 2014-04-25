@@ -1,0 +1,90 @@
+//
+//  S2LCommentViewController.m
+//  snap2life suite
+//
+//  Created by iOS on 13.12.13.
+//  Copyright (c) 2013 Prisma Gmbh. All rights reserved.
+//
+
+#import "S2LCommentViewController.h"
+#import "PersistenceManager.h"
+#import "S2LCommunityManager.h"
+#import "AFS2LAppAPIClient.h"
+#import "S2LIRRequestMaker.h"
+#import "SerializerAPI2.h"
+
+@interface S2LCommentViewController ()
+
+@end
+
+@implementation S2LCommentViewController
+
+@synthesize snapID;
+
+-(IBAction)submitHandler:(id)sender
+{
+    if(![comment.text isEqualToString:@""] && ![comment.text isEqualToString:NSLocalizedString(@"new_comment", nil)]){
+        
+        submit.enabled = NO;
+        [[S2LCommunityManager sharedInstance] flush];
+        
+        AFS2LAppAPIClient *httpClient = [AFS2LAppAPIClient sharedClient];
+        [httpClient configuringDefaultHeadersWithADO:[[S2LIRRequestMaker sharedClient] ado]];
+        
+        SerializerAPI2 *serializer = [[SerializerAPI2 alloc] init];
+        NSString *metadata = [serializer serializeComment:comment.text snapID:snapID];
+        
+        NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"interaction/store/" parameters:nil constructingBodyWithBlock: ^(id <AFMultipartFormData>formData) {
+            
+            [formData appendPartWithFileData:[metadata dataUsingEncoding:NSUTF8StringEncoding] name:@"interaction.xml" fileName:@"interaction.xml" mimeType:@"application/octet-stream"];
+            
+        }];
+        
+        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
+        [httpClient enqueueHTTPRequestOperation:operation];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"alert_comment_title", nil) message:NSLocalizedString(@"alert_comment_message", nil) delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+    }
+    
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    textField.text = @"";
+    return YES;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.title = NSLocalizedString(@"comment", nil);
+    
+	S2LCommunityManager* community = [S2LCommunityManager sharedInstance];
+    [community loadSnap:snapID withCompletition:^(UIImage *snap) {
+        backgroundImageView.image = snap;
+    }];
+    
+
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

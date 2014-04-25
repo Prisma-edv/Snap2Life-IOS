@@ -1,0 +1,37 @@
+//
+//  S2LSnapCell.h
+//  snap2life suite
+//
+//  Created by iOS on 12.12.13.
+//  Copyright (c) 2013 Prisma Gmbh. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "S2LCommunitySnapDef.h"
+
+@interface S2LSnapCell : UICollectionViewCell <UITableViewDataSource,UITableViewDelegate>
+{
+    
+    NSArray *oldComments;
+    
+    UIButton *shearFb;
+    UIButton *shearTwitter;
+    
+    UIActivityIndicatorView *preloader;
+    
+}
+
+@property (nonatomic) IBOutlet UILabel *title;
+@property (nonatomic) IBOutlet UIScrollView *scroll;
+
+@property (nonatomic) IBOutlet UIImageView *snapImageView;
+@property (nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (nonatomic) IBOutlet UITableView *table;
+
+@property (nonatomic,unsafe_unretained) UIViewController *parent;
+@property (nonatomic,strong) S2LCommunitySnapDef *snapDef;
+
+-(void)shearFBHandler;
+-(void)shearTwitterHandler;
+
+@end

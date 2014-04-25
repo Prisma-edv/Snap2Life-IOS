@@ -1,0 +1,119 @@
+//
+//  S2LSnapCell.m
+//  snap2life suite
+//
+//  Created by iOS on 12.12.13.
+//  Copyright (c) 2013 Prisma Gmbh. All rights reserved.
+//
+
+#import "S2LSnapCell.h"
+#import "S2LCommunityManager.h"
+#import "S2LNavigationUtils.h"
+#import "RequestUtils.h"
+#import "ObjectDef.h"
+#import "S2LSerializerAPI2.h"
+
+
+@implementation S2LSnapCell
+@synthesize snapDef,parent;
+@synthesize table,scroll,avatarImageView,snapImageView;
+
+-(void)setSnapDef:(S2LCommunitySnapDef *)_snapDef
+{
+    snapDef = _snapDef;
+    
+    shearFb = [UIButton buttonWithType:UIButtonTypeCustom];
+    shearFb.frame = CGRectMake(self.frame.size.width - 44 , 180 - 44 - 6, 44, 44);
+    [shearFb setImage:[UIImage imageNamed:@"Facebook-icon.png"] forState:UIControlStateNormal];
+    [shearFb addTarget:self action:@selector(shearFBHandler) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:shearFb];
+    
+    table.backgroundColor = [UIColor clearColor];
+    table.backgroundView = nil;
+    table.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+}
+
+
+#pragma mark UITABLEVIEW
+
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return oldComments.count;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"commentCell";
+    UITableViewCell *cell = [table dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"_baloon-community.png"]];
+        cell.backgroundColor = UIColorFromRGB(PROFILEBCKCOLOR, 0.5);
+    }
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[NSLocale currentLocale]];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    NSDictionary *dic = [oldComments objectAtIndex:indexPath.row];
+    cell.textLabel.text = [dic objectForKey:@"comment"];
+    cell.detailTextLabel.text = [dateFormatter stringFromDate:[RequestUtils dateFromIsoString:[dic objectForKey:@"date"]]];
+    
+    return cell;
+}
+
+#pragma mark UIVIEWCONTROLLER
+
+-(void)shearFBHandler
+{
+    [S2LNavigationUtils shearOnFaceBook:snapImageView.image fromViewController:parent];
+}
+
+-(void)shearTwitterHandler
+{
+    [S2LNavigationUtils shearOnTweeter:snapImageView.image fromViewController:parent];
+}
+
+
+-(void)layoutSubviews
+{
+    preloader = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    preloader.center = avatarImageView.center;
+    [avatarImageView addSubview:preloader];
+    
+        S2LSerializerAPI2 *serializer = [[S2LSerializerAPI2 alloc] init];
+        ObjectDef *obj = [serializer deserializeObjectDefWithString:snapDef.value];
+        self.title.text = obj.infos.title;
+    
+    S2LCommunityManager *cm = [S2LCommunityManager sharedInstance];
+    
+    [cm loadSnap:snapDef.snapId withCompletition:^(UIImage *snap) {
+        self.snapImageView.image = snap;
+    }];
+    
+    [cm loadAvatar:snapDef.snapperId withCompletition:^(UIImage *avatar) {
+        self.avatarImageView.image = avatar;
+        [preloader removeFromSuperview];
+        preloader = nil;
+    }];
+    
+    oldComments = nil;
+    [table reloadData];
+
+    [cm loadComments:snapDef.snapId withCompletition:^(NSArray *comments) {
+            oldComments = comments;
+            [self.table reloadData];
+            scroll.contentSize = CGSizeMake(self.frame.size.width, self.table.frame.origin.y + self.table.contentSize.height);
+        
+    }];
+
+}
+
+@end

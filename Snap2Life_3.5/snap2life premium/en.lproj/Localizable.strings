@@ -1,0 +1,182 @@
+/*
+ Localizable.strings
+ Snap2Life
+ 
+ Created by prisma on 14.06.11.
+ Copyright 2011 Prisma Gmbh. All rights reserved.
+ */
+
+"restore_notStored" = "This account is not in use: create a new account.";
+"restore_notCorrect" = "This account name is not correct: remove weird characters.";
+
+
+"alert_comment_title" = "Comment";
+"alert_comment_message" = "Write a comment.";
+
+"alert_connection_bestmatch_title" = "Connection Error";
+"alert_connection_bestmatch_message" = "You lost connection: the snap is saved in the history. You can upload it later when you'll get internet connection again.";
+
+"alert_erase_confirm_title" = "Erase History";
+"alert_erase_confirm_message" = "Are you sure to remove those items from the history:";
+"skip" = "Skip";
+"alert_logged_comment" = "You need to be logged in to comment.";
+"cancel" = "Cancel";
+"ups_title" = "title";
+"btn_save&share" = "Save & Share";
+"new_comment" = "Insert a new comment";
+"comment" = "Comment";
+"history_snap_report" = "Generate snap report";
+"erase_selected" ="Erase selected";
+"error_submit_btn" = "Submit";
+"bookmark_placeholder" = "You can find here all your bookmarks.";
+"ar_package_placeholder" = "You can find here all downloaded ar packages.";
+"history_placeholder" = "You can find here all your snaps.";
+
+"error_submit_btn" = "Submit";
+"bookmark_placeholder" = "You can find here all your bookmarks.";
+"ar_package_placeholder" = "You can find here all downloaded ar packages.";
+"history_placeholder" = "You can find here all your snaps.";
+
+"bookmark_in" = "Bookmark this Snap";
+"bookmark_out" = "Unbookmark this Snap";
+
+"user_email_alert" = "the e-mail provided is not correct.";
+"ar_detail_label" = "selected package details";
+"ar_tutorial_link" = "http://www.snap2life.de/index.php/ausprobieren-galerie/?lang=en";
+"ar_tutorial" = "Visit Our Tutorial";
+
+"ar_download_title" = "Update";
+"ar_download_text" = "A new Augmented Reality package is ready for downloading.";
+"ar_download_failed" = "Error while downloading the Augmented Reality package.";
+"ar_download_progress" = "%d%% of %0.2f MB";
+"history_map" = "map";
+"history_record" = "record";
+"history_not_record" = "not record";
+"history_edit" = "edit";
+
+"settings_history_exparing" = "Keep History For";
+"settings_history_day" = "Days";
+"settings_title_common" = "Common Settings";
+"settings_gallery" = "Gallery";
+"ar_ipad_library" = "Library";
+"ar_segmented_first" = "Camera";
+
+"settings_title" = "snap2life - Settings";
+"ar_segmented_second" = "Photos";
+"newsettings_settings" = "Common settings";
+"utilities_email" = "Letter to Snap2life";
+"ar_download_title" = "Update";
+"settings_browser_title" = "Browser";
+"settings_browser_desc" = "Use Safari instead of the internal browser.";
+"contents" = "Image contents";
+"error" = "No image match!";
+"transfer_error" = "There is a problem with the transmission. Check if you have web access.";
+"no_camera" = "Your device does not have a camera, to use this app you need one. Please, press the Home button to exit the application.";
+"memory_low" = "The device's memory is low. Please, close some other running apps to free up some memory.";
+"xml_error" = "Invalid error text.";
+"db_error_title" = "snap2life® Warning";
+"db_error_desc" = "Error retrieving previous user settings. You must delete the app first and then reinstall it.";
+"alert_warning" = "Warning";
+"alert_confirm" = "OK";
+"back_btn" = "back";
+"edit_btn" = "Edit";
+
+"loading_run" = "Image is being analysed";
+"result_contents" = "Contents for the image";
+"title" = "Title";
+"bad_url" = "Invalid forwarding address";
+"about_intro_text" = "Try out snap2life®";
+"about_intro_text_1" = "In order to try out this app you should visit the snap2life® homepage (www.snap2life.de) on a laptop and go to the menu option 'Try it out'. Then 'snap' one or more of the pictures listed at the bottom of the page.";
+"about_intro_text_2" = "About snap2life®";
+"about_intro_text_3" = "snap2life® joins up print- and billboard images with predefined online content. We offer the snap2life® Image Recognition Algorithm and Augmented Reality in individually customized apps or as an API for inclusion in existing apps. You will find our complete range of services under www.snap2life.de. Or just give us a call: +49 30 2388 2030.";
+"about_actual_btn" = "Aktuelle Motive";
+"about_contact_btn" = "Contact";
+"about_impressum_btn" = "Legal notice";
+"about_privacy_text" = "";
+"about_version_text" = "Versionsnummer";
+
+"url_actual" = "http://www.snap2life.de/gallery.html";
+"url_impressum" = "http://www.snap2life.de/index.php/snap2life/impressum/?lang=en";
+"email_contact" = "mail@snap2life.de";
+"email_subject" = "Interest in snap2life®";
+
+"snap_tipp" = "Please capture the whole motif";
+
+"button_cancel" = "Cancel";
+"button_ok" = "OK";
+"button_update" = "Download";
+
+"put_intro_text" = "No match was found for the picture. If you like, you can store the snap in the database so as to share it with others. They can then snap your picture and follow your link.";
+"put_key_label" = "Give a name to your snap:";
+"put_key_placeholder" = "";
+"put_comment_label" = "Comment (appears when someone else snaps):";
+"put_comment_placeholder" = "";
+"put_url_label" = "Link (web link to which the snap points, optional):";
+"put_url_placeholder" = "http://";
+"put_submit_button_text" = "Save & Share";
+"put_vali_empty_key" = "You must enter a name so as to identify the snap.";
+"put_vali_empty_comment" = "You must enter a comment. This will appear as a hint or link text when someone else snaps your picture.";
+"put_vali_malformed_url" = "Malformed URL. The link must begin with http:// or mailto:// and may not contain any blanks or special characters.";
+"put_adlink_name" = "snap2life® website";
+"put_adlink_url" = "http://www.snap2life.de/?lang=en";
+"put_success_title" = "Save successful";
+"put_success_desc" = "Your snap and its corresponding comment/link were stored and are now available when someone else snaps your picture.";
+"put_description_label" = "Description";
+
+"settings_2fs_title" = "2-Finger-Snap";
+"settings_2fs_desc" = "Outline a picture motif with 2 fingers and let go.";
+"settings_put_title" = "Submit new Snaps";
+"settings_put_desc" = "snap2life® can prompt you to store and comment on a snap the first time the image is processed.";
+"settings_historic_title" = "Store your Snaps";
+"settings_historic_desc" = "Snap a motif with snap2life® even when offline. Submit the image later.";
+"settings_gps_title" = "GPS";
+"settings_gps_desc" = "GPS helps snap2life® bring optimal results.";
+"settings_sound_title" = "Sound";
+"settings_sound_desc" = "Switch the camera click on or off.";
+"settings_ar_title" = "Augmented Reality";
+"settings_ar_desc" = "Allow 3D effects in pre-defined motives.";
+"settings_circle_connect_title" = "Circle Connect";
+"settings_circle_connect_desc" = "Share with other snappers.";
+"settings_ar_download_text_search" = "Looking for downloads...";
+"settings_ar_download_text_failed" = "Problem with network availaility";
+"settings_ar_download_text_update" = "A download is available";
+"settings_ar_download_text_noupdate" = "No download available";
+"settings_profile_title" = "User Profile";
+"settings_deviceID_title" = "Unique Device Identifier";
+"settings_downloadURL_title" = "URL for AR download";
+"comment_save" = "Save comment";
+"profile_text" = "You can store your picture, e-mail and name (or a nickname) in your profile. The e-mail address is important if you want to receive e-mail notifications of snaps you send.";
+"profile_email_title" = "E-mail";
+"profile_name_title" = "Your name";
+"profile_save" = "Save profile";
+
+"profile_profileimage_title" = "Avatar";
+"profile_secretimage_title" = "Secret Image";
+"profile_save" = "Save";
+"profile_logout" = "Do you really want to log out?";
+"register_alreadyRegistered" = "This nickname is already in use.";
+"profile_restore" = "Restore";
+
+"download_title" = "Update";
+"gallery_download_title" = "Picture Gallery";
+"ar_download_text" = "A new Augmented Reality package is ready for downloading.";
+"gallery_download_text" = "A new picture gallery package is ready for downloading.";
+"download_failed" = "Error while downloading the update package.";
+"download_progress" = "%d%% of %0.2f MB";
+"ar_package_size_format" = "%1.2fMB";
+"ar_package_update_btn" = "Update AR Packages";
+"ar_activate" = "Activate AR:";
+"ar_package_update_select" = "Update selected AR package";
+"alert_already_downloaded" = "This package has already been downloaded.";
+
+"history_send_for_pdf" = "Send selected for batch processing";
+
+"tutorial_title_1" = "snap2life® Image Recognition";
+"tutorial_title_2" = "Augmented Reality";
+"tutorial_title_3" = "2-Finger-Snap";
+"tutorial_title_4" = "Gallery";
+
+"tutorial_descr_1" = "This app can recognize images which have already been linked to online content. When you photograph one of these images you are directed to online content within seconds.";
+"tutorial_descr_2" = "Some images activate 3D-objects and animations which float above the picture. For this to happen just hold the mobile over the picture.";
+"tutorial_descr_3" = "If an image is some distance away you can zoom the display window by outlining with two fingers. Just make a picture border with two fingers and let go.";
+"tutorial_descr_4" = "Erleben Sie einen Auszug aller mit snap2life aktivierten Motive.";

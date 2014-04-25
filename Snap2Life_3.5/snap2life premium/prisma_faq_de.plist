@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>value</key>
+		<string>snap2life verwendet die Kamera in deinem mobilen Gerät, um Bilder, die aufgenommen oder gescannt werden, zu erkennen. Die Antwort könnte ein einfacher Web-Link Video- oder Audio-Wiedergabe oder auf andere Weise sein!</string>
+		<key>label</key>
+		<string>Wie arbeitet snap2life?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Wenn ein Bild, Objekt, Werbetafel oder Artikel das snap2life oder snap it! Symbol zeigt, bedeutet es, dass es zusätzliche Inhalte für die Anzeige auf deinem mobilen Gerät bereitstellt bzw. enthält, wenn du das Bild, Objekt, Werbeplakat oder den Artikel snapst.</string>
+		<key>label</key>
+		<string>Woher weiß ich, was ich aufnehmen kann?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Die App ist nicht in der Lage, mit dem Server über das Internet eine Verbindung aufzunehmen. Sie haben vielleicht nicht die neueste, optimierte und aktualisierte Version der Anwendung installiert.
+Probieren Sie einige der folgenden Maßnahmen: Überprüfen Sie das richtige Bild, das erkannt werden soll (die ganze Anzeige, ein Logo, ein Element oder ein Objekt in der Kamera-Ansicht oder auf der Seite oder die gesamte Seite?). Sorgen sie dafür, dass das Bild das ganze Display ausfüllt, indem Sie mit zwei Fingern snappen.
+Wenn nichts geschieht, bewegen Sie die Kamera aus dem Bild und wieder zurück und stellen sicher, dass kein Licht auf dem Bild reflektiert.</string>
+		<key>label</key>
+		<string>Warum funktioniert die Erkennung nicht?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Ab sofort ist snap2life auf Android und IOS verfügbar. snap2life wird bald auch auf Blackberry und Windows 8 Plattformen verfügbar sein. </string>
+		<key>label</key>
+		<string>Auf welchen Geräten ist snap2life verfügbar?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Wenn die Datenverbindung nicht stark genug ist, kann der Download evtl. unterbrochen werden. Wenn dies geschieht, folge diesen Schritten:
+Gehe auf die Programmeinstellungen im jeweiligen Dialog des mobilen Betriebssystems.
+Lösche die Daten für die APP.
+Deinstalliere snap2life.
+Installiere die APP neu und warte, bis die Daten synchronisiert sind.
+Verwende die App, um zu sehen, ob sie funktioniert.</string>
+		<key>label</key>
+		<string>Warum funktioniert die App nicht mehr, nachdem ich diese aktualisiert habe?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Es könnte verschiedene Gründe dafür geben. Zum Beispiel wird die Anwendung in einem Flugzeug aufgrund der Nicht-Verfügbarkeit von Netzwerken nicht funktionieren. Die Anwendung erfordert eine aktive Datenverbindung. Das gleiche könnte in anderen Transportmitteln geschehen, wo das Netzwerk nicht verfügbar ist.</string>
+		<key>label</key>
+		<string>Warum funktioniert die Anwendung nicht während der Fahrt?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Ja! Du erhältst Anrufe und SMS, wenn du snap2life benutzt.</string>
+		<key>label</key>
+		<string>Bekomme ich Anrufe und SMS, wenn snap2life genutzt wird?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>snap2life ist die Erkennungsplattform und der Motor der Anwendung.
+Snap2life verbindet Print- und Bildinhalte mit vordefinierten Online-Inhalten. Wir bieten die snap2life Image Recognition und Augmented Reality in individuell angepassten Anwendungen an. Für weitere Informationen, besuche bitte www.snap2life.de oder kontaktiere uns unter mail@snap2life.de.</string>
+		<key>label</key>
+		<string>Was ist snap2life?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>SnapMap zeigt die entsprechende Stelle auf der Karte, wo das Bild aus der App aufgenommen wurde.
+</string>
+		<key>label</key>
+		<string>Was ist SnapMap?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Eine Sammlung von möglichen Motiven oder anderen Inhalten, die dynamisch in der App zur Verfügung gestellt werden.</string>
+		<key>label</key>
+		<string>Was ist die Gallery?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Alle Bilder, die über die App aufgenommen wurden, werden in der Historie gespeichert, so dass du das Bild bei Bedarf wieder ansehen kannst. Zusätzlich zeigt sie die Historie von Inhalten, die über die App durchsucht wurden. Du kannst die Historie bis zu 45 Tage aufbewahren.</string>
+		<key>label</key>
+		<string>Was ist die History?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Alle selektierten Bilder in der Historie werden inklusive der zugehörigen Links und Kommentare an die E-Mail-Adresse gesendet, die du beim Registrieren in deinem Profil hinterlegt hast.</string>
+		<key>label</key>
+		<string>Was ist der Snap Report?</string>
+	</dict>
+</array>
+</plist>

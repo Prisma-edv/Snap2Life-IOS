@@ -1,0 +1,313 @@
+//
+//  S2LNewResultViewController.m
+//  snap2life suite
+//
+//  Created by Antonio_Stilo on 11/21/13.
+//  Copyright (c) 2013 Prisma Gmbh. All rights reserved.
+//
+
+#import "S2LNewResultViewController.h"
+#import "Featuregroup.h"
+#import "Feature.h"
+#import "AppDataObject.h"
+#import "S2LIRRequestMaker.h"
+#import "RequestUtils.h"
+#import "ASVoteView.h"
+#import "S2LNavigationUtils.h"
+#import "S2LCommunityManager.h"
+#import "Extra.h"
+#import "PersistenceManager.h"
+#import "UIButton+UIButton_style.h"
+#import "S2LCommentViewController.h"
+
+@interface S2LNewResultViewController ()
+
+@end
+
+@implementation S2LNewResultViewController
+
+@synthesize object;
+@synthesize history;
+@synthesize index,commentBtn,shearBtn;
+
+-(IBAction)shearHandler
+{
+    if (shearPopUP.superview == nil) {
+        [commentPopUP hide:YES];
+        S2LShearPopView *view = [[S2LShearPopView alloc] initWithFrame:CGRectMake(0, 0, 272, 108)];
+        view.parent = self;
+        view.image = background.image;
+        
+        shearPopUP = [[ADPopupView alloc] initAtPoint:CGPointMake(shearBtn.center.x, shearBtn.center.y+24) delegate:nil withContentView:view];
+        shearPopUP.popupColor = [UIColor whiteColor];
+        [shearPopUP showInView:self.view animated:YES];
+        
+    }else{
+        [shearPopUP hide:YES];
+    }
+    
+}
+
+-(IBAction)commentHandler
+{
+    if (commentPopUP.superview == nil) {
+        [shearPopUP hide:YES];
+        
+        S2LCommentPopoView *view = [[S2LCommentPopoView alloc] initWithFrame:CGRectMake(0, 0, 230, 108)];
+        view.snapID = [object snapID];
+        [view setSuccess:^(){
+            [commentPopUP hide:YES];
+            [self buildInterface];
+        }];
+        
+        commentPopUP = [[ADPopupView alloc] initAtPoint:CGPointMake(commentBtn.center.x, commentBtn.center.y+24) delegate:nil withContentView:view];
+        commentPopUP.popupColor = [UIColor whiteColor];
+        [commentPopUP showInView:self.view animated:YES];
+    }else{
+        [commentPopUP hide:YES];
+    }
+}
+
+#pragma mark Table view delegate
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return features.count;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    // The header for the section is the region name -- get this from the region at the section index.
+    //return NSLocalizedString(@"contents", @"Contents of the Image");
+    return nil;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *MyIdentifier = @"MyIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    if (cell == nil) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:MyIdentifier];
+    }
+    
+    NSInteger rowIndex = indexPath.row;
+    
+    Feature *f = [features objectAtIndex:rowIndex];
+    
+    // Disable the selectability of the text in the cell (only the buttons are of interest).
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
+    if (f.value != nil && [f.value hasPrefix:@"http"]) {
+        // Set a button if the Feature has a non-null URL.
+        [cell.textLabel setText:[(Feature*)f name]];
+        [cell.textLabel setBackgroundColor:UIColorFromRGB(MAIN_COLOR,0.0)];
+        [cell.textLabel setTextColor:[UIColor blackColor]];
+        cell.backgroundColor = [UIColor clearColor];
+        [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"_arrow-green-history.png"]]];
+    }
+    else {
+        NSDate* timestamp = [RequestUtils dateFromIsoString:f.name];
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setLocale:[NSLocale currentLocale]];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+        // Set a two-line cell with the date in grey at the top and the comment below.
+        [cell.textLabel setText:[dateFormatter stringFromDate:timestamp]];
+        [cell.textLabel setBackgroundColor:[UIColor whiteColor]];
+        [cell.textLabel setTextColor:[UIColor blackColor]];
+        [cell.detailTextLabel setFont:[UIFont systemFontOfSize:14]];
+        [cell.detailTextLabel setText:f.value];
+        [cell.detailTextLabel setBackgroundColor:[UIColor whiteColor]];
+        [cell.detailTextLabel setTextColor:[UIColor blackColor]];
+        cell.backgroundColor = [UIColor clearColor];
+        [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"_ballon-big-reusult.png"]]];
+    }
+    
+    UIView *bck = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    bck.backgroundColor = [UIColor whiteColor];
+    [cell addSubview:bck];
+    [cell sendSubviewToBack:bck];
+    
+    cell.textLabel.frame = CGRectMake(cell.textLabel.frame.origin.x, (44-cell.textLabel.frame.size.height)/2, cell.textLabel.frame.size.width, cell.textLabel.frame.size.height);
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSInteger rowIndex = indexPath.row;
+    Feature *f = [features objectAtIndex:rowIndex];
+    NSLog(@"[f value] %@ -", [f value]);
+    if ([[f value] length] > 0 && [f.value hasPrefix:@"http"]) {
+        [self openWebUrlAndStore:f.value andTargetName:[history.snapID stringValue]];
+    }
+}
+
+
+
+#pragma mark view controller
+
+-(void)shearOnTweeter:(id)sender
+{
+    [S2LNavigationUtils shearOnTweeter:background.image fromViewController:self];
+}
+
+-(void)shearOnFaceBook:(id)sender
+{
+    [S2LNavigationUtils shearOnFaceBook:background.image fromViewController:self];
+}
+
+-(void)openWebUrlAndStore:(NSString*)urlString andTargetName:(NSString*)name
+{
+    [S2LNavigationUtils openWebUrlAndStore:urlString andTargetName:name fromViewController:self];
+    
+}
+
+-(void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+-(void)backBtnUserClicked
+{
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index] animated:YES];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"back_btn", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(backBtnUserClicked)];
+    [self buildInterface];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    isFirst = NO;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void)parse:(NSArray*)comments
+{
+    NSMutableArray *featureList = [[NSMutableArray alloc] init];
+    for (Featuregroup* fg in object.featuregroups.featuregroup){
+        for (Feature* f in fg.feature){
+            if ([[f value] length] > 0) {
+                [featureList addObject:f];
+            }
+        }
+        
+        NSArray *list = [featureList sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            int order1 = [(Feature*) obj1 order];
+            if ([[(Feature*) obj1 value] length] == 0) order1 += 10000;
+            int order2 = [(Feature*) obj2 order];
+            if ([[(Feature*) obj2 value] length] == 0) order2 += 10000;
+            return (order1 < order2)? NSOrderedAscending: (order1 == order2)? NSOrderedSame: NSOrderedDescending;
+        }];
+        
+        NSMutableArray *all = [NSMutableArray arrayWithArray:list];
+        
+        NSMutableArray *parsedComments = [NSMutableArray array];
+        [comments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSDictionary *dic = (NSDictionary*)obj;
+            Feature *f = [[Feature alloc] init];
+            f.name = [dic objectForKey:@"date"];
+            f.value = [dic objectForKey:@"comment"];
+            [parsedComments addObject:f];
+        }];
+        
+        [all addObjectsFromArray:parsedComments];
+        
+        features = all;
+        [table reloadData];
+        
+        // Show results screen if more than one result or if one result and it has an empty URL.
+        if ([list count] == 1 && !isFirst){
+            Feature *f = [list objectAtIndex:0];
+            if (![f.value isEqualToString:@""]){
+                [self performSelector:@selector(callExternalLink:) withObject:f.value afterDelay:1.0];
+                isFirst = YES;
+            }
+        }
+    }
+}
+
+-(void)callExternalLink:(NSString*)value
+{
+    [self openWebUrlAndStore:value andTargetName:[history.snapID stringValue]];
+}
+
+
+- (void) buildInterface
+{
+    
+    S2LCommunityManager *cm = [S2LCommunityManager sharedInstance];
+    snapID = [object snapID];
+    table.alpha = 0.0;
+    [cm flush];
+    [cm loadComments:snapID withCompletition:^(NSArray *comments) {
+        [self parse:comments];
+        
+        table.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+        table.delegate = self;
+        table.dataSource = self;
+        table.backgroundColor = [UIColor clearColor];
+        table.backgroundView = nil;
+        [table setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        table.rowHeight = 50;
+        [table reloadData];
+        
+        table.scrollEnabled = NO;
+        int w = 320;
+        int h = 160;
+        if (isIPad) {
+            w = 768;
+            h = table.frame.origin.y+50;
+        }
+        
+        table.frame = CGRectMake(0, table.frame.origin.y, table.frame.size.width, table.contentSize.height);
+        scroll.contentSize = CGSizeMake(w, h+table.contentSize.height);
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            table.alpha = 1.0;
+        }];
+    }];
+    
+    int height = 120;
+    if(isIPad)height = 220;
+    
+    AppDataObject *ado = [[S2LIRRequestMaker sharedClient] ado];
+    
+    NSData *capturedData = ado.capturedData;
+	if (capturedData){
+        UIImage *img = [[UIImage alloc] initWithData:capturedData];
+        background.image = img;
+	}
+    
+    titleLabel.text = history.snapTitle;
+	descriptionLabel.text = history.snapDesc;
+
+    ASVoteView *voteView = [[ASVoteView alloc] initWithFrame:CGRectMake(0, 10, 200, 44) withHistory:history];
+    [scroll addSubview:voteView];
+    
+    PersistenceManager *pm = [PersistenceManager sharedInstance];
+    
+    if ([pm.profile.name isEqualToString:@""]) {
+        commentBtn.hidden = YES;
+    }
+    
+    [scroll bringSubviewToFront:commentBtn];
+    [scroll bringSubviewToFront:shearBtn];
+}
+
+
+@end

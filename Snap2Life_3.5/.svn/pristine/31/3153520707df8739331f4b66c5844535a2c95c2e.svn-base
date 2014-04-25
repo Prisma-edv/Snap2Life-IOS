@@ -1,0 +1,57 @@
+//
+//  Screen4Subview.h
+//  Snap2Life
+//
+//  Created by prisma on 17.01.12.
+//  Copyright (c) 2012 Prisma Gmbh. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "MyAppDataObject.h"
+#import "AppDelegateProtocol.h"
+
+@interface Screen4Subview : UIControl
+
+@property (nonatomic, unsafe_unretained) id<DBDelegate> dbDelegate;
+@property (nonatomic, unsafe_unretained) id<SettingsDelegate> settingsDelegate;
+@property (nonatomic, unsafe_unretained) MyAppDataObject *ado;
+
+@property (nonatomic, strong) IBOutlet UIView *setting2FSView;
+@property (nonatomic, strong) IBOutlet UIView *settingSaveHistoricView;
+@property (nonatomic, strong) IBOutlet UIView *settingGPSView;
+@property (nonatomic, strong) IBOutlet UIView *settingSoundView;
+@property (nonatomic, strong) IBOutlet UIView *settingARView;
+
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet UILabel *setting2FSTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *setting2FSDescLabel;
+@property (nonatomic, strong) IBOutlet UILabel *settingSaveHistoricTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *settingSaveHistoricDescLabel;
+@property (nonatomic, strong) IBOutlet UILabel *settingGPSTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *settingGPSDescLabel;
+@property (nonatomic, strong) IBOutlet UILabel *settingSoundTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *settingSoundDescLabel;
+@property (nonatomic, strong) IBOutlet UILabel *settingARTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *settingARDescLabel;
+
+@property (nonatomic, strong) IBOutlet UISwitch *setting2FSSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *settingSaveHistoricSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *settingGPSSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *settingSoundSwitch;
+@property (nonatomic, strong) IBOutlet UISwitch *settingARSwitch;
+
+@property Boolean setting2FS;
+@property Boolean settingSaveHistoric;
+@property Boolean settingGPS;
+@property Boolean settingSound;
+@property Boolean settingAR;
+
+-(IBAction) settings2FSSwitchChanged;
+-(IBAction) settingSaveHistoricSwitchChanged;
+-(IBAction) settingGPSSwitchChanged;
+-(IBAction) settingSoundSwitchChanged;
+-(IBAction) settingARSwitchChanged;
+
+- (void) refreshUI;
+
+@end

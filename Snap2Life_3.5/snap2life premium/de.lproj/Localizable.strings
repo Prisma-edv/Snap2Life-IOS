@@ -1,0 +1,183 @@
+/* 
+  Localizable.strings
+  snap2life suite
+
+  Created by Antonio Stilo on 07.02.13.
+  Copyright (c) 2013 Prisma Gmbh. All rights reserved.
+*/
+
+"restore_notStored" = "This account is not in use: create a new account.";
+"restore_notCorrect" = "This account name is not correct: remove weird characters.";
+
+"alert_comment_title" = "Kommentar";
+"alert_comment_message" = "Schreibe einen Kommentar.";
+
+"alert_connection_bestmatch_title" = "Verbindungsfehler";
+"alert_connection_bestmatch_message" = "Du hast keine Verbindung: das Foto wird in der Historie gesichert. Du kannst es später hochladen, wenn die Internet-Verbindung wieder hergestellt ist.";
+
+"alert_erase_confirm_title" = "Erase History";
+"alert_erase_confirm_message" = "Are you sure to remove those items from the history:";
+"skip" = "Überspringen";
+"alert_logged_comment" = "Zum Kommentieren musst Du angemeldet sein.";
+"cancel" = "Abbruch";
+"ups_title" = "Titel";
+"btn_save&share" = "Speichern & Teilen";
+"new_comment" = "Füge einen neuen Kommentar hinzu";
+"comment" = "Kommentar";
+"history_snap_report" = "Erstelle Snap Report";
+"erase_selected" ="Ausgewählte löschen";
+"error_submit_btn" = "Wiederholen";
+
+"bookmark_placeholder" = "Hier findest du alle Lesezeichen.";
+"ar_package_placeholder" = "Hier findest du alle heruntergeladenen Augemented Reality Pakete.";
+"history_placeholder" = "Hier findest du alle Snaps.";
+
+"bookmark_in" = "Snap in Bookmarks verschieben";
+"bookmark_out" = "Snap aus Bookmarks entfernen";
+
+"user_email_alert" = "Die angegebene E-Mail ist nicht gültig.";
+"ar_detail_label" = "Details für ausgewähltes Paket";
+"ar_tutorial_link" = "http://www.snap2life.de/index.php/ausprobieren-galerie/?lang=de";
+"ar_tutorial" = "Besuche unser Tutorial";
+"ar_download_title" = "Update";
+"ar_download_text" = "Es steht ein neues Augmented Reality Paket zum Herunterladen bereit.";
+"ar_download_failed" = "Leider konnte das Update-Paket nicht heruntergeladen werden.";
+"ar_download_progress" = "%d%% von %0.2f MB";
+
+"history_map" = "Karte";
+"history_record" = "erkannt";
+"history_not_record" = "nicht erkannt";
+"history_edit" = "Bearbeiten";
+
+"settings_history_exparing" = "Historie behalten für";
+"settings_history_day" = "Tage";
+"settings_gallery" = "Galerie";
+"settings_title" = "snap2life - Einstellungen";
+"ar_ipad_library" = "Bibliothek";
+"ar_segmented_first" = "Kamera";
+"ar_segmented_second" = "Fotos";
+"newsettings_settings" = "Allgemein";
+"settings_title_common" = "Allgemein";
+"utilities_email" = "Brief an Snap2life";
+
+"ar_download_title" = "Update";
+
+"settings_browser_title" = "Browser";
+"settings_browser_desc" = "Safari anstelle des internen Browsers.";
+"contents" = "Inhalte zum Bild";
+"error" = "Ups :)";
+"transfer_error" = "Es gibt ein Problem mit der Verbindung. Überprüfe, ob Du Verbindung zum Web hast!";
+//"transfer_error" = "Das machen wir nochmal! Besuchen Sie unsere Webseite, um die aktuellen Kampagnen zu entdecken.";
+"no_camera" = "Dein Handy hat keine Kamera. Diese Anwendung benötigt eine Kamera. Schade. Klicke auf die \"Home\" Taste um die Anwendung zu verlassen.";
+"memory_low" = "Der Speicher ist knapp, wir empfehlen Dir einige laufende Apps zu schließen.";
+"xml_error" = "Fehlertext nicht valid.";
+"db_error_title" = "snap2life® Warnung";
+"db_error_desc" = "Ein Fehler ist beim Lesen der Benutzereinstellungen aufgetreten. Sie müssen die App zunächst löschen und dann wieder installieren.";
+"alert_warning" = "Achtung";
+"alert_confirm" = "OK";
+"back_btn" = "zurück";
+"edit_btn" = "Bearbeiten";
+
+"loading_run" = "Bild wird analysiert";
+"result_contents" = "Inhalte zum Bild";
+"title" = "Titel";
+"bad_url" = "Ungültige Weiterleitung";
+"about_intro_text" = "snap2life® ausprobieren";
+"about_intro_text_1" = "Zum Ausprobieren dieser App können Sie die snap2life® Seite (www.snap2life.de) besuchen und die unter Menüpunkt 'Ausprobieren' aufgeführten Bilder direkt am Bildschirm fotografieren.";
+"about_intro_text_2" = "Über snap2life®";
+"about_intro_text_3" = "snap2life® verbindet beliebige Print- und Plakatinhalte mit definierten Online-Inhalten. Wir bieten den snap2life® Bilderkennungsalgorithmus in individuell entwickelten Apps oder als API zum Einbau in bereits bestehende Apps an. Das gesamte Leistungsangebot finden Sie unter www.snap2life.de. Oder rufen Sie uns direkt an: +49 30 2388 2030.";
+"about_actual_btn" = "Aktuelle Motive";
+"about_contact_btn" = "Kontakt";
+"about_impressum_btn" = "Impressum";
+"about_privacy_text" = "";
+"about_version_text" = "Versionsnummer";
+
+"url_actual" = "http://www.snap2life.de/gallery.html";
+"url_impressum" = "http://www.snap2life.de/index.php/snap2life/impressum/";
+"email_contact" = "mail@snap2life.de";
+"email_subject" = "Interesse an snap2life®";
+
+"snap_tipp" = "Bitte das gesamte Motiv erfassen!";
+
+"button_cancel" = "Abbrechen";
+"button_ok" = "OK";
+"button_update" = "Download";
+
+"put_intro_text" = "Das Bild wurde nicht erkannt. Wenn Du magst, kannst Du den Snap um die folgenden Angaben ergänzen und in der Datenbank speichern. Somit können andere Leute Deine Bilder snappen:";
+"put_key_label" = "Name";
+"put_key_placeholder" = "";
+"put_comment_label" = "Kommentar";
+"put_comment_placeholder" = "";
+"put_description_label" = "Beschreibung";
+"put_url_label" = "Link (Web-Adresse wohin der Snap zeigt, optional):";
+"put_url_placeholder" = "http://";
+"put_submit_button_text" = "Speichern & Teilen";
+"put_vali_empty_key" = "Ein Name muss vorhanden sein, damit der Snap identifiziert werden kann.";
+"put_vali_empty_comment" = "Du musst Deinen Snap kommentieren. Dieses wird als Hinweis oder Link-Text erscheinen, wenn andere Dein Bild snappen.";
+"put_vali_malformed_url" = "Malformed URL. Der Link muss mit http:// oder mailto:// anfangen, darf keine Leerstellen und keine Sonderzeichen enthalten.";
+"put_adlink_name" = "snap2life®-Webseite";
+"put_adlink_url" = "http://www.snap2life.de/";
+"put_success_title" = "Speichern erfolgreich";
+"put_success_desc" = "Dein Snap und den dazu gehörigen Hinweis/Link wurden gespeichert und stehen ab sofort anderen zur Verfügung.";
+
+"settings_2fs_title" = "2-Finger-Snap";
+"settings_2fs_desc" = "Mit 2 Fingern ein Motiv auswählen und loslassen.";
+"settings_put_title" = "Fotos speichern & teilen";
+"settings_put_desc" = "snap2life® kann ein Bild speichern, das er noch nicht kennt. So kannst Du Deine Bilder mit anderen teilen.";
+"settings_historic_title" = "Historie speichern";
+"settings_historic_desc" = "Ein Bild mit snap2life® auch offline snappen. Dann später abschicken.";
+"settings_gps_title" = "GPS";
+"settings_gps_desc" = "Mit GPS kann snap2life® die optimalen Ereignisse erzielen.";
+"settings_sound_title" = "Sound";
+"settings_sound_desc" = "Das Kamerageräusch ein- und ausschalten.";
+"settings_ar_title" = "Augmented Reality";
+"settings_ar_desc" = "Bei ausgewählten Motiven 3D-Effekte einblenden.";
+"settings_circle_connect_title" = "Circle Connect";
+"settings_circle_connect_desc" = "Deine Aufnahmen mit anderen teilen.";
+"settings_ar_download_text_search" = "Suche nach Updates...";
+"settings_ar_download_text_failed" = "Verbindungsfehler";
+"settings_ar_download_text_update" = "Update vorhanden";
+"settings_ar_download_text_noupdate" = "Kein Update vorhanden";
+"settings_profile_title" = "Benutzerprofil";
+"settings_deviceID_title" = "Eindeutige Geräte-Kennung";
+"settings_downloadURL_title" = "URL für den AR-Download";
+"comment_save" = "Kommentar speichern";
+"profile_text" = "Sie können Ihr Bild, Ihre Email und Ihren Namen (oder einen Pseudonym) als Profil speichern. Nur die Email-adresse ist zwingend, falls Sie Rückmeldung über abgeschickte Snaps bekommen möchten.";
+
+"profile_profileimage_title" = "Avatar";
+"profile_secretimage_title" = "Geheimbild";
+"profile_email_title" = "Email";
+"profile_name_title" = "Ihr Name";
+"profile_save" = "Profil speichern";
+"profile_restore" = "Wiederherstellen";
+"profile_logout" = "Willst du dich wirklich ausloggen?";
+
+"register_alreadyRegistered" = "Dieser Name wird bereits benutzt.";
+
+"restore_notStored" = "Das Profil wurde nicht gefunden. Sie können ein neues Profil erstellen.";
+"restore_notCorrect" = "Der Profilname ist nicht korrekt. Es sind nur Ziffern und Buchstaben erlaubt.";
+
+
+"download_title" = "Update";
+"gallery_download_title" = "Beispiel-Galerie";
+"ar_download_text" = "Es liegt ein neues Augmented Reality Paket zum Herunterladen bereit.";
+"gallery_download_text" = "Es liegt ein neues Galerie-Paket zum Herunterladen bereit.";
+"download_failed" = "Leider konnte das Update-Paket nicht heruntergeladen werden.";
+"download_progress" = "%d%% von %0.2f MB";
+"ar_package_size_format" = "%1.2fMB";
+"ar_package_update_btn" = "Update AR-Pakete";
+"ar_activate" = "AR aktivieren:";
+"ar_package_update_select" = "Ausgewähltes AR-Paket aktualisieren";
+"alert_already_downloaded" = "Dieses Paket wurde bereits heruntergeladen.";
+
+"history_send_for_pdf" = "Ausgewählte Bilder als Email zuschicken";
+
+"tutorial_title_1" = "snap2life® Bilderkennung";
+"tutorial_title_2" = "Augmented Reality";
+"tutorial_title_3" = "2-Finger-Snap";
+"tutorial_title_4" = "Galerie";
+
+"tutorial_descr_1" = "Diese App kann Bilder erkennen, die vorher mit Online-Inhalten verbunden wurden. Durch Fotografieren eines solchen Bildes gelangt man in Sekunden zu spannenden Inhalten.";
+"tutorial_descr_2" = "Einige Bilder aktivieren 3D-Objekte und Animationen, die über dem Bild sichtbar werden. Dazu muss man das Handy über das Bild halten.";
+"tutorial_descr_3" = "Wenn ein Bild weit entfernt ist, kann man den Fotoausschnitt auf dem Bildschirm mit zwei Fingern eingrenzen. Mit beiden Fingern einen Rahmen aufziehen und loslassen.";
+"tutorial_descr_4" = "Erleben Sie einen Auszug aller mit snap2life aktivierten Motive.";

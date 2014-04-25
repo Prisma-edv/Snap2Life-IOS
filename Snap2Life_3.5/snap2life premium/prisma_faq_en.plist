@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>value</key>
+		<string>snap2life uses the camera in your mobile device to recognize images that can be snapped or scanned. The response could be anything from a simple web-link or video play or audio play or any other way of engagement!</string>
+		<key>label</key>
+		<string>How does snap2life work?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>If any image, object, wallpaper or article displays the snap2life or snap it! or vooh! Logo next to it, it implies that there is additional content available for viewing on your mobile device when you snap the image, object, wallpaper or article.</string>
+		<key>label</key>
+		<string>How do I know what I can snap?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>The App may not be able to sync with the server due to connectivity or network errors 
+You may not have the latest, most optimized updated version of the application installed.
+Try some of the following corrective actions
+Focus on the correct image check what exactly needs to be scanned (the whole ad, a logo, an element an object, in the camera view or on the page or the whole page?) and ensure image fills the display window by using the two finger snap.
+If nothing happens, move camera off the image and back again.
+Ensure that there is no light reflecting off the image.</string>
+		<key>label</key>
+		<string>Why is it not working?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>As of now snap2life is available on Android and IOS. snap2life shall be available on Blackberry and Windows 8 platforms soon. </string>
+		<key>label</key>
+		<string>On which devices does it work?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>If the data connection is not strong enough, at times the download may be interrupted. If this happens follow the mentioned step:
+Go to the application settings.
+Clear the data for.
+Uninstall snap2life.
+Reinstall and wait for the data to Sync.
+Use the app to see it functioning properly.</string>
+		<key>label</key>
+		<string>Why has the app stopped working after I updated?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>There could be various reasons for it. For e.g. in a flight the application will not work due to the non-availability of network as the application requires on an active data connection. The same will happen during transit in any other means of transport where the network is not available.</string>
+		<key>label</key>
+		<string>Why does the application not work while traveling?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Yes! You will receive calls and SMS when using the application.</string>
+		<key>label</key>
+		<string>Will I receive calls and SMS when using the application?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>snap2life is the software engine powering the snap2life application. 
+Snap2life joins up print and billboard images with predefined online content. We offer the snap2life Image Recognition and Augmented Reality in individually customized apps. For more information, please visit www.snap2life.de or contact us at mail@snap2life.de.</string>
+		<key>label</key>
+		<string>What is snap2life?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>SnapMap shows the corresponding location on the map where the image was clicked from the app.</string>
+		<key>label</key>
+		<string>What is SnapMap?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>Collection of possible motives or other content that are made available dynamically in the app.</string>
+		<key>label</key>
+		<string>What is Gallery?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>All the images snapped through the app would be stored in the history so that you can see the image again when needed. Additionally it displays the history of content browsed through the app. You can keep the history for up to 45 days.</string>
+		<key>label</key>
+		<string>What is History?</string>
+	</dict>
+	<dict>
+		<key>value</key>
+		<string>All selected images in the history including the associated links and comments will be sent to the e-mail account that you have recorded in your profile if you are registered.</string>
+		<key>label</key>
+		<string>What is the snap report?</string>
+	</dict>
+</array>
+</plist>

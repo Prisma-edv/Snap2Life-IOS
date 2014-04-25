@@ -1,0 +1,160 @@
+//
+//  S2LCommunityViewController.m
+//  snap2life suite
+//
+//  Created by iOS on 12.12.13.
+//  Copyright (c) 2013 Prisma Gmbh. All rights reserved.
+//
+
+#import "S2LCommunityViewController.h"
+#import "S2LCommunityManager.h"
+#import "S2LSnapCell.h"
+#import "PersistenceManager.h"
+#import "S2LCommentViewController.h"
+#import "Constants.h"
+
+@interface S2LCommunityViewController ()
+
+@end
+
+@implementation S2LCommunityViewController
+@synthesize data;
+
+#pragma mark UITABLEVIEW
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    PersistenceManager* pm = [PersistenceManager sharedInstance];
+    if(![pm.profile.name isEqualToString:@""])
+    {
+        S2LCommentViewController* comment = [self.storyboard instantiateViewControllerWithIdentifier:@"comment"];
+        comment.snapID = [(S2LCommunitySnapDef*)[data objectAtIndex:indexPath.row] snapId];
+        [self.navigationController pushViewController:comment animated:YES];
+    }
+    else
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Community" message:NSLocalizedString(@"alert_logged_comment", nil) delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+    }
+
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return data.count;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *CellIdentifier = [NSString stringWithFormat:@"CommunityCell%u",indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil){
+        cell = [[S2LSnapCell alloc] initWithStyle:UITableViewCellStyleValue2
+                                      reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+
+    [(S2LSnapCell*)cell setSnapDef:[data objectAtIndex:indexPath.row]];
+    [(S2LSnapCell*)cell setParent:self];
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
+
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    UITableViewCell *cell = [self tableView:table cellForRowAtIndexPath:indexPath];
+    return [(S2LSnapCell*)cell height];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self tableView:table cellForRowAtIndexPath:indexPath];
+    return [(S2LSnapCell*)cell height];
+}
+
+
+
+#pragma mark UIVIEWCONTROLLER
+
+-(void)prepareTable
+{
+    UIActivityIndicatorView *preloader = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [preloader startAnimating];
+    
+    UIBarButtonItem *preloaderItem = [[UIBarButtonItem alloc] initWithCustomView:preloader];
+    [self.navigationItem setRightBarButtonItem:preloaderItem];
+    
+    NSMutableArray *effectiveListID = [NSMutableArray array];
+    NSMutableArray *effectiveList = [NSMutableArray array];
+    S2LCommunityManager *cm = [S2LCommunityManager sharedInstance];
+    [cm loadSnapListWithCompletition:^(NSArray *snapsDefs) {
+        
+        NSArray *snapList = [[snapsDefs reverseObjectEnumerator] allObjects];
+        
+        for (int i = 0; i < snapList.count; i++) {
+            S2LCommunitySnapDef *tmp = (S2LCommunitySnapDef*)[snapList objectAtIndex:i];
+            if (![effectiveListID containsObject:tmp.snapId]) {
+                [effectiveList addObject:tmp];
+                [effectiveListID addObject:tmp.snapId];
+                
+                [cm loadSnap:tmp.snapId withCompletition:^(UIImage *snap) {
+                    [cm loadComments:tmp.snapId withCompletition:^(NSArray *comments) {
+                        self.data = [[effectiveList reverseObjectEnumerator] allObjects];
+                        table.frame = self.view.bounds;
+                        [table reloadData];
+                    }];
+                }];
+            }
+        }
+        
+        self.navigationItem.rightBarButtonItem = nil;
+    }];
+
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.title = @"Community";
+    
+    UIToolbar *toolbar = self.navigationController.toolbar;
+    toolbar.tintColor = UIColorFromRGB(BACKGROUND, 1.0);
+    
+    UINavigationBar *navBar = self.navigationController.navigationBar;
+    navBar.tintColor = UIColorFromRGB(BACKGROUND, 1.0);
+    
+    self.navigationController.navigationBarHidden = NO;
+    
+    int height = 184;
+    if (isIPad) {
+        height = 360;
+    }
+
+    table.rowHeight = height;
+    table.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self prepareTable];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

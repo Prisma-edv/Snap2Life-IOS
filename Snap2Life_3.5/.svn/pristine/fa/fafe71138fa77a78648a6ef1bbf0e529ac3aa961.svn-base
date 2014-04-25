@@ -1,0 +1,199 @@
+//
+//  Screen4Subview.m
+//  Snap2Life
+//
+//  Created by prisma on 17.01.12.
+//  Copyright (c) 2012 Prisma Gmbh. All rights reserved.
+//
+
+#import "Screen4Subview.h"
+
+@implementation Screen4Subview
+
+@synthesize dbDelegate;
+@synthesize settingsDelegate;
+@synthesize ado;
+
+@synthesize scrollView;
+@synthesize setting2FSTitleLabel;
+@synthesize setting2FSDescLabel;
+@synthesize settingSaveHistoricTitleLabel;
+@synthesize settingSaveHistoricDescLabel;
+@synthesize settingGPSTitleLabel;
+@synthesize settingGPSDescLabel;
+@synthesize settingSoundTitleLabel;
+@synthesize settingSoundDescLabel;
+@synthesize settingARTitleLabel;
+@synthesize settingARDescLabel;
+
+@synthesize setting2FSView;
+@synthesize settingGPSView;
+@synthesize settingSaveHistoricView;
+@synthesize settingSoundView;
+@synthesize settingARView;
+
+@synthesize setting2FSSwitch;
+@synthesize settingSaveHistoricSwitch;
+@synthesize settingGPSSwitch;
+@synthesize settingSoundSwitch;
+@synthesize settingARSwitch;
+
+@synthesize setting2FS;
+@synthesize settingSaveHistoric;
+@synthesize settingGPS;
+@synthesize settingSound;
+@synthesize settingAR;
+
+/**
+ Returns a pointer to the shared variables structure.
+ */
+- (MyAppDataObject*) theAppDataObject;
+{
+	id<AppDelegateProtocol> theDelegate = (id<AppDelegateProtocol>) [UIApplication sharedApplication].delegate;
+	MyAppDataObject* theDataObject;
+	theDataObject = (MyAppDataObject*) theDelegate.ado;
+	return theDataObject;
+}
+
+-(IBAction) settings2FSSwitchChanged{
+    self.setting2FS = [setting2FSSwitch isOn];
+    
+    [dbDelegate getAppSettings].setting2FS = [NSNumber numberWithBool:self.setting2FS];    
+    [dbDelegate saveSettings];
+    
+    [settingsDelegate settingsChanged];
+}
+
+-(IBAction) settingSaveHistoricSwitchChanged{
+    self.settingSaveHistoric = [settingSaveHistoricSwitch isOn];
+    
+    [dbDelegate getAppSettings].settingSaveHistoric = [NSNumber numberWithBool:self.settingSaveHistoric];
+    [dbDelegate saveSettings];
+    
+    [settingsDelegate settingsChanged];
+}
+
+-(IBAction) settingGPSSwitchChanged{
+    self.settingGPS = [settingGPSSwitch isOn];
+    
+    [dbDelegate getAppSettings].settingGPS = [NSNumber numberWithBool:self.settingGPS];    
+    [dbDelegate saveSettings];
+    
+    [settingsDelegate settingsChanged];
+}
+
+-(IBAction) settingSoundSwitchChanged{
+    self.settingSound = [settingSoundSwitch isOn];
+    
+    [dbDelegate getAppSettings].settingSound = [NSNumber numberWithBool:self.settingSound];
+    [dbDelegate saveSettings];
+    
+    [settingsDelegate settingsChanged];
+}
+
+-(IBAction) settingARSwitchChanged{
+    self.settingAR = [settingARSwitch isOn];
+    
+    [dbDelegate getAppSettings].settingAR = [NSNumber numberWithBool:self.settingAR];
+    [dbDelegate saveSettings];
+    
+    [settingsDelegate settingsChanged];
+}
+
+- (void) refreshUI{
+    
+    ado = [self theAppDataObject];
+    
+    [setting2FSSwitch setOn:NO];
+    [settingSaveHistoricSwitch setOn:NO];
+    [settingGPSSwitch setOn:NO];
+    [settingSoundSwitch setOn:NO];
+    [settingARSwitch setOn:NO];
+    
+    //Localized strings
+    NSString *text1 = NSLocalizedString(@"settings_2fs_title",nil);
+    [setting2FSTitleLabel setText:text1];
+    setting2FSTitleLabel.textColor = UIColorFromRGB(SEC_COLOR_1, 1.0);
+    
+    NSString *text2 = NSLocalizedString(@"settings_2fs_desc",nil);
+    [setting2FSDescLabel setText:text2];
+    setting2FSDescLabel.textColor = UIColorFromRGB(SEC_COLOR_3,1.0);
+    
+    NSString *text3 = NSLocalizedString(@"settings_historic_title",nil);
+    [settingSaveHistoricTitleLabel setText:text3];
+    //settingSaveHistoricTitleLabel.textColor = UIColorFromRGB(MAIN_COLOR,1.0);
+    settingSaveHistoricTitleLabel.textColor = UIColorFromRGB(SEC_COLOR_1, 1.0);
+    
+    NSString *text4 = NSLocalizedString(@"settings_historic_desc",nil);
+    [settingSaveHistoricDescLabel setText:text4];
+    settingSaveHistoricDescLabel.textColor = UIColorFromRGB(SEC_COLOR_3,1.0);
+    
+    NSString *text5 = NSLocalizedString(@"settings_gps_title",nil);
+    [settingGPSTitleLabel setText:text5];
+    settingGPSTitleLabel.textColor = UIColorFromRGB(SEC_COLOR_1, 1.0);
+    
+    NSString *text6 = NSLocalizedString(@"settings_gps_desc",nil);
+    [settingGPSDescLabel setText:text6];
+    settingGPSDescLabel.textColor = UIColorFromRGB(SEC_COLOR_3,1.0);
+    
+    NSString *text7 = NSLocalizedString(@"settings_sound_title",nil);
+    [settingSoundTitleLabel setText:text7];
+    settingSoundTitleLabel.textColor = UIColorFromRGB(SEC_COLOR_1, 1.0);
+    
+    NSString *text8 = NSLocalizedString(@"settings_sound_desc",nil);
+    [settingSoundDescLabel setText:text8];
+    settingSoundDescLabel.textColor = UIColorFromRGB(SEC_COLOR_3,1.0);
+    
+    NSString *text9 = NSLocalizedString(@"settings_ar_title",nil);
+    [settingARTitleLabel setText:text9];
+    settingARTitleLabel.textColor = UIColorFromRGB(SEC_COLOR_1, 1.0);
+    
+    NSString *text10 = NSLocalizedString(@"settings_ar_desc",nil);
+    [settingARDescLabel setText:text10];
+    settingARDescLabel.textColor = UIColorFromRGB(SEC_COLOR_3,1.0);
+    
+    if (!ACT_TWOFINGERSSNAP) [setting2FSSwitch setEnabled:FALSE];
+    if (!ACT_AR_MODE || ado.deviceInfo.modelInteger == MODEL_IPHONE_3G ) [settingARSwitch setEnabled:FALSE];
+    
+    //[scrollView setContentSize:CGSizeMake(320.0,480)];
+    
+    //Settings
+    if ([[[dbDelegate getAppSettings] setting2FS] boolValue] == YES)
+        setting2FSSwitch.on = YES;
+    if ([[[dbDelegate getAppSettings] settingSaveHistoric] boolValue] == YES)
+        settingSaveHistoricSwitch.on = YES;
+    if ([[[dbDelegate getAppSettings] settingGPS] boolValue] == YES)
+        settingGPSSwitch.on = YES;
+    if ([[[dbDelegate getAppSettings] settingSound] boolValue] == YES)
+        settingSoundSwitch.on = YES;
+    if ([[[dbDelegate getAppSettings] settingAR] boolValue] == YES)
+        settingARSwitch.on = YES;
+    
+    //Disable depending on Programmer's Flags (See Constants.h)
+    if (!ACT_AR_MODE) [settingARView setHidden:TRUE];
+    if (!ACT_TWOFINGERSSNAP) [setting2FSView setHidden:TRUE];
+    
+}
+
+- (void)viewDidUnload {
+    
+    self.scrollView = nil;
+    self.setting2FSTitleLabel = nil;
+    self.setting2FSDescLabel = nil;
+    self.settingSaveHistoricTitleLabel = nil;
+    self.settingSaveHistoricDescLabel = nil;
+    self.settingGPSTitleLabel = nil;
+    self.settingGPSDescLabel = nil;
+    self.settingSoundTitleLabel = nil;
+    self.settingSoundDescLabel = nil;
+    self.settingARTitleLabel = nil;
+    self.settingARDescLabel = nil;    
+    self.setting2FSSwitch = nil;
+    self.settingSaveHistoricSwitch = nil;
+    self.settingGPSSwitch = nil;
+    self.settingSoundSwitch = nil;
+    self.settingARSwitch = nil;
+}
+
+
+@end

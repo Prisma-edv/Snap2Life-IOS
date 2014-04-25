@@ -1,0 +1,570 @@
+//
+//  s2lUserPreferencesViewController.m
+//  snap2life suite
+//
+//  Created by Antonio Stilo on 26.02.13.
+//  Copyright (c) 2013 Prisma Gmbh. All rights reserved.
+//
+
+#import "s2lUserPreferencesViewController.h"
+#import "PersistenceManager.h"
+#import "Constants.h"
+#import "UIImage-Extensions.h"
+#import "UIButton+UIButton_style.h"
+#import "S2LRegister.h"
+#import "S2LRestore.h"
+
+@interface s2lUserPreferencesViewController ()
+
+@property (nonatomic,strong) UIImagePickerController* imagePicker;
+@property (nonatomic,strong) UIScrollView* scrollView;
+@property (nonatomic,strong) UILabel* profileTextLbl;
+@property (nonatomic,strong) UIButton* profileImage;
+@property (nonatomic, strong) UILabel* profileImageLbl;
+@property (nonatomic,strong) UIButton* secretImage;
+@property (nonatomic, strong) UILabel* secretImageLbl;
+@property (nonatomic,strong) UILabel* profileEmailLbl;
+@property (nonatomic,strong) UITextField* profileEmail;
+@property (nonatomic,strong) UILabel* profileNameLbl;
+@property (nonatomic,strong) UITextField* profileName;
+@property (nonatomic,strong) UIButton* saveBtn;
+@property (nonatomic,strong) UIButton* restoreBtn;
+@property (nonatomic,strong) UIButton* skipBtn;
+
+// The reaction to pressing the profile image button. The imagePicker is activated.
+-(void)pickImage;
+
+// The reaction to pressing the Store button.
+-(void)storeProfile;
+
+@end
+
+@implementation s2lUserPreferencesViewController
+
+-(void)secretHandler
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Secret Image" message:@"This image it will be your key image to restore your account detail don't lost this." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [alert show];
+}
+
+-(void)avatarHandler
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Avatar Image" message:@"This image it's your avatar: any time you'll post a comment or participate at the community will appear" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [alert show];
+
+}
+
+#pragma mark -
+#pragma mark Implementation UIViewController overrides
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        
+    }
+    return self;
+}
+
+-(void)viewDidLayoutSubviews
+{
+    if (DEBUG_VERBOSE) NSLog(@"s2lUserPreferencesViewController.viewDidLayoutSubviews self.view.frame=(%f, %f, %f, %f)", self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+    self.scrollView.frame = self.view.frame;
+    CGFloat x0, y0;
+    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        x0 = 20;
+        y0 = 10;
+    }
+    else {
+        x0 = (self.scrollView.frame.size.width-280)/2.0;
+        y0 = 10;
+    }
+    self.profileImage.frame = CGRectMake(x0, y0, self.profileImage.frame.size.width, self.profileImage.frame.size.height);
+    
+    self.secretImage.frame = CGRectMake(x0+self.profileImage.frame.size.width+10, y0, self.secretImage.frame.size.width, self.secretImage.frame.size.height);
+    
+    y0 += (self.profileImage.frame.size.height > self.profileTextLbl.frame.size.height)?
+        self.profileImage.frame.size.height + 10:
+        self.profileTextLbl.frame.size.height + 10;
+    
+    self.profileImageLbl.frame = CGRectMake(x0, y0, self.profileImageLbl.frame.size.width, self.profileImageLbl.frame.size.height);
+    y0 += self.profileImageLbl.frame.size.height;
+    
+    self.secretImageLbl.frame = CGRectMake(self.secretImage.frame.origin.x , self.profileImageLbl.frame.origin.y, self.secretImageLbl.frame.size.width, self.secretImageLbl.frame.size.height);
+    y0 += self.secretImageLbl.frame.size.height;
+    
+    self.profileEmailLbl.frame = CGRectMake(x0, y0, self.profileEmailLbl.frame.size.width, self.profileEmailLbl.frame.size.height);
+    y0 += self.profileEmailLbl.frame.size.height;
+
+    profileEmailBck.frame = CGRectMake(0, y0, profileEmailBck.frame.size.width, profileEmailBck.frame.size.height);
+    
+    self.profileEmail.frame = CGRectMake(x0, y0, self.profileEmail.frame.size.width, self.profileEmail.frame.size.height);
+    y0 += self.profileEmail.frame.size.height + 10;
+    
+    self.profileNameLbl.frame = CGRectMake(x0, y0, self.profileNameLbl.frame.size.width, self.profileNameLbl.frame.size.height);
+    y0 += self.profileNameLbl.frame.size.height;
+    
+    profileNameBck.frame = CGRectMake(0, y0, profileNameBck.frame.size.width, profileNameBck.frame.size.height);
+    
+    self.profileName.frame = CGRectMake(x0, y0, self.profileName.frame.size.width, self.profileName.frame.size.height);
+    y0 += self.profileName.frame.size.height + 25;
+    
+    self.saveBtn.frame = CGRectMake(x0, y0, self.saveBtn.frame.size.width, self.saveBtn.frame.size.height);
+    y0 += self.saveBtn.frame.size.height + 10;
+    
+    self.restoreBtn.frame = CGRectMake(x0, y0, self.restoreBtn.frame.size.width, self.restoreBtn.frame.size.height);
+    y0 += self.restoreBtn.frame.size.height + 10;
+    
+    self.skipBtn.frame = CGRectMake(x0, y0, self.skipBtn.frame.size.width, self.restoreBtn.frame.size.height);
+    
+    y0 += self.skipBtn.frame.size.height + 10;
+    
+    infoAvatarBtn.frame = CGRectMake((self.profileImage.frame.origin.x+self.profileImage.frame.size.width)-infoAvatarBtn.frame.size.width-6, (self.profileImage.frame.origin.y+self.profileImage.frame.size.height)-infoAvatarBtn.frame.size.height-6, infoAvatarBtn.frame.size.width, infoAvatarBtn.frame.size.height);
+    
+    infoSecretBtn.frame = CGRectMake((self.secretImage.frame.origin.x+self.secretImage.frame.size.width)-infoSecretBtn.frame.size.width-6, (self.secretImage.frame.origin.y+self.secretImage.frame.size.height)-infoSecretBtn.frame.size.height-6, infoSecretBtn.frame.size.width, infoSecretBtn.frame.size.height);
+    
+    
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, y0)];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+    PersistenceManager *persistentManager = [PersistenceManager sharedInstance];
+    
+    NSString* profileEmail = persistentManager.profile.email;
+    NSString* profileName = persistentManager.profile.name;
+    UIImage* profileImg = [UIImage imageWithData:persistentManager.profile.avatar];
+    UIImage* secretImg = [UIImage imageWithData:persistentManager.profile.secretImage];
+    
+    self.profileEmail.text = profileEmail;
+    self.profileName.text = profileName;
+    [self.profileImage setImage:profileImg forState:UIControlStateNormal];
+    [self.secretImage setImage:secretImg forState:UIControlStateNormal];
+    
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    
+    
+    PersistenceManager *persistentManager = [PersistenceManager sharedInstance];
+    
+    NSString* profileEmail = persistentManager.profile.email;
+    NSString* profileName = persistentManager.profile.name;
+    UIImage* profileImg = [UIImage imageWithData:persistentManager.profile.avatar];
+    UIImage* secretImg = [UIImage imageWithData:persistentManager.profile.secretImage];
+    
+    NSLog(@"SKIP %d",[persistentManager.profile.skip boolValue]);
+    
+    if ([persistentManager.profile.skip boolValue] || (![profileEmail isEqualToString:@""] &&
+                                                       ![profileName isEqualToString:@""])) {
+        [self performSegueWithIdentifier:@"arSegue" sender:nil];
+    }
+    
+    int imgWidth = profileImg.size.width;
+    int width = 280;
+    if(isIPad){
+        width = 730;
+        imgWidth = 220;
+    }
+    // Black screen.
+    self.view.backgroundColor = UIColorFromRGB(BACKGROUND, 1);
+    self.scrollView.backgroundColor = UIColorFromRGB(BACKGROUND, 1);
+    // Get profile settings from the database.
+    
+    
+
+    
+    
+    // Set up a UIScrollview to contain the whole screen.
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:self.scrollView];
+    
+    // Place the profile image as a custom interactive button at the top and the general profile text next to the image.
+    _profileImage = [UIButton buttonWithType:UIButtonTypeCustom];
+    //[self.profileImage setImage:profileImg forState:UIControlStateNormal];
+    self.profileImage.frame = CGRectMake(0, 0, imgWidth, imgWidth);
+    self.profileImage.showsTouchWhenHighlighted = YES;
+    [self.profileImage addTarget:self action:@selector(pickImage) forControlEvents:UIControlEventTouchUpInside];
+    self.profileImage.layer.cornerRadius = 20;
+    self.profileImage.layer.masksToBounds = YES;
+    [self.scrollView addSubview:self.profileImage];
+    
+    infoAvatarBtn = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    infoAvatarBtn.frame = CGRectMake((self.profileImage.frame.origin.x+self.profileImage.frame.size.width)-infoAvatarBtn.frame.size.width, (self.profileImage.frame.origin.y+self.profileImage.frame.size.height)-infoAvatarBtn.frame.size.height, infoAvatarBtn.frame.size.width, infoAvatarBtn.frame.size.height);
+    [infoAvatarBtn addTarget:self action:@selector(avatarHandler) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:infoAvatarBtn];
+    
+    _profileImageLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 20)];
+    self.profileImageLbl.backgroundColor = UIColorFromRGB(BACKGROUND, 1);
+    self.profileImageLbl.textColor = [UIColor darkGrayColor];
+    self.profileImageLbl.numberOfLines = 1;
+    self.profileImageLbl.font = [UIFont systemFontOfSize:11];
+    self.profileImageLbl.text = NSLocalizedString(@"profile_profileimage_title",nil);
+    [self.scrollView addSubview:self.profileImageLbl];
+    
+    _secretImage = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.secretImage setImage:secretImg forState:UIControlStateNormal];
+    self.secretImage.frame = CGRectMake(0, 0, imgWidth, imgWidth);
+    self.secretImage.showsTouchWhenHighlighted = YES;
+    [self.secretImage addTarget:self action:@selector(pickSecretImage) forControlEvents:UIControlEventTouchUpInside];
+    self.secretImage.layer.cornerRadius = 20;
+    self.secretImage.layer.masksToBounds = YES;
+    [self.scrollView addSubview:self.secretImage];
+    
+    infoSecretBtn = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    infoSecretBtn.frame = CGRectMake((self.secretImage.frame.origin.x+self.secretImage.frame.size.width)-infoSecretBtn.frame.size.width, (self.secretImage.frame.origin.y+self.secretImage.frame.size.height)-infoSecretBtn.frame.size.height, infoSecretBtn.frame.size.width, infoSecretBtn.frame.size.height);
+    [infoSecretBtn addTarget:self action:@selector(secretHandler) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:infoSecretBtn];
+    
+    _secretImageLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 20)];
+    self.secretImageLbl.backgroundColor = UIColorFromRGB(BACKGROUND, 1);
+    self.secretImageLbl.textColor = [UIColor darkGrayColor];
+    self.secretImageLbl.numberOfLines = 1;
+    self.secretImageLbl.font = [UIFont systemFontOfSize:11];
+    self.secretImageLbl.text = NSLocalizedString(@"profile_secretimage_title",nil);
+    [self.scrollView addSubview:self.secretImageLbl];
+    
+    // Email label and entry field.
+    
+    _profileEmailLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 20)];
+    self.profileEmailLbl.backgroundColor = UIColorFromRGB(BACKGROUND, 1);
+    self.profileEmailLbl.textColor = [UIColor darkGrayColor];
+    self.profileEmailLbl.numberOfLines = 1;
+    self.profileEmailLbl.font = [UIFont systemFontOfSize:11];
+    self.profileEmailLbl.text = NSLocalizedString(@"profile_email_title",nil);
+    [self.scrollView addSubview:self.profileEmailLbl];
+    
+    profileEmailBck = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    profileEmailBck.backgroundColor = [UIColor whiteColor];
+    [self.scrollView addSubview:profileEmailBck];
+    
+    _profileEmail = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, width, 44)];
+    self.profileEmail.delegate = self;
+    //self.profileEmail.text = profileEmail;
+    self.profileEmail.clipsToBounds = YES;
+    self.profileEmail.keyboardType = UIKeyboardTypeEmailAddress;
+    self.profileEmail.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.profileEmail.borderStyle = UITextBorderStyleNone;
+    self.profileEmail.font = [UIFont systemFontOfSize:14];
+    self.profileEmail.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    [self.scrollView addSubview:self.profileEmail];
+    
+    // Name label and entry field.
+    _profileNameLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 20)];
+    self.profileNameLbl.backgroundColor = UIColorFromRGB(BACKGROUND, 1);
+    self.profileNameLbl.textColor = [UIColor darkGrayColor];
+    self.profileNameLbl.numberOfLines = 1;
+    self.profileNameLbl.font = [UIFont systemFontOfSize:11];
+    self.profileNameLbl.text = NSLocalizedString(@"profile_name_title",nil);
+    [self.scrollView addSubview:self.profileNameLbl];
+    
+    profileNameBck = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    profileNameBck.backgroundColor = [UIColor whiteColor];
+    [self.scrollView addSubview:profileNameBck];
+    
+    _profileName = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, width, 44)];
+    self.profileName.delegate = self;
+    //self.profileName.text = profileName;
+    self.profileName.clipsToBounds = YES;
+    self.profileName.keyboardType = UIKeyboardTypeDefault;
+    self.profileName.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    self.profileName.borderStyle = UITextBorderStyleNone;
+    self.profileName.font = [UIFont systemFontOfSize:14];
+    [self.scrollView addSubview:self.profileName];
+    
+    // Save button.
+    _saveBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.saveBtn.frame = CGRectMake(0, 0, width, 40);
+    [self.saveBtn setTitle:NSLocalizedString(@"profile_save", nil) forState:UIControlStateNormal];
+    [self.saveBtn addTarget:self action:@selector(storeProfile) forControlEvents:UIControlEventTouchUpInside];
+    [self.saveBtn setStyle];
+    [self.scrollView addSubview:self.saveBtn];
+    
+    // Restore button.
+    _restoreBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.restoreBtn.frame = CGRectMake(0, 0, width, 40);
+    [self.restoreBtn setTitle:NSLocalizedString(@"profile_restore", nil) forState:UIControlStateNormal];
+    [self.restoreBtn addTarget:self action:@selector(restoreProfile) forControlEvents:UIControlEventTouchUpInside];
+    [self.restoreBtn setStyle];
+    [self.scrollView addSubview:self.restoreBtn];
+    
+    // Skip button.
+    _skipBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.skipBtn.frame = CGRectMake(0, 0, width, 40);
+    [self.skipBtn setTitle:NSLocalizedString(@"skip", nil) forState:UIControlStateNormal];
+    [self.skipBtn addTarget:self action:@selector(skipProfile) forControlEvents:UIControlEventTouchUpInside];
+    [self.skipBtn setStyle];
+    [self.scrollView addSubview:self.skipBtn];
+    
+    // Image picker.
+    _imagePicker = [[UIImagePickerController alloc] init];
+    self.imagePicker.delegate = self;
+    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    
+    UIToolbar *toolbar = self.navigationController.toolbar;
+    toolbar.tintColor = UIColorFromRGB(GREY, 1.0);
+    
+    UINavigationBar *navBar = self.navigationController.navigationBar;
+    navBar.tintColor = UIColorFromRGB(GREY, 1.0);
+	// Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = UIColorFromRGB(BACKGROUND, 1);
+    self.scrollView.backgroundColor = UIColorFromRGB(BACKGROUND, 1);
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark -
+#pragma mark Private methods
+
+// The reaction to pressing the profile image button. The imagePicker is activated.
+-(void)pickImage {
+    
+    selectedImage = self.profileImage;
+    imageScaleSize = self.profileImage.frame.size;
+    if(!isIPad){
+        [self presentViewController:self.imagePicker animated:YES completion:NULL];
+    }else{
+        popover = [[UIPopoverController alloc] initWithContentViewController:self.imagePicker];
+        popover.delegate = self;
+        [popover presentPopoverFromRect:self.profileImage.frame
+                                 inView:self.view
+               permittedArrowDirections:UIPopoverArrowDirectionAny
+                               animated:YES];
+    }
+    
+}
+-(void)pickSecretImage
+{
+    selectedImage = self.secretImage;
+    imageScaleSize = CGSizeMake(320, 480);
+    if(!isIPad){
+        [self presentViewController:self.imagePicker animated:YES completion:NULL];
+    }else{
+        popover = [[UIPopoverController alloc] initWithContentViewController:self.imagePicker];
+        popover.delegate = self;
+        [popover presentPopoverFromRect:self.secretImage.frame
+                                 inView:self.view
+               permittedArrowDirections:UIPopoverArrowDirectionAny
+                               animated:YES];
+    }
+}
+-(BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController
+{
+    return  YES;
+}
+
+-(void)enableBtns:(BOOL)value
+{
+    self.restoreBtn.enabled = value;
+    self.saveBtn.enabled = value;
+    self.skipBtn.enabled = value;
+
+    if (value) {
+        self.restoreBtn.alpha += 0.3;
+        self.saveBtn.alpha += 0.3;
+        self.skipBtn.alpha += 0.3;
+    }else{
+        self.restoreBtn.alpha -= 0.3;
+        self.saveBtn.alpha -= 0.3;
+        self.skipBtn.alpha -= 0.3;
+    }
+}
+
+-(BOOL) checkIsValidEmail:(NSString *)checkString
+{
+    BOOL stricterFilter = YES; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
+    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *laxString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
+}
+// The reaction to pressing the Store button.
+-(void)storeProfile {
+    
+    [self enableBtns:NO];
+    
+    __block UIActivityIndicatorView* loadingView = [[UIActivityIndicatorView alloc] init];
+    loadingView.frame = CGRectMake(self.saveBtn.frame.origin.x + self.saveBtn.frame.size.width - 36, self.saveBtn.frame.origin.y + 4, 30, 30);
+    [loadingView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+    [loadingView startAnimating];
+    [self.scrollView addSubview:loadingView];
+    
+    if([self checkIsValidEmail:[self.profileEmail.text lowercaseString]] &&
+       ![self.profileEmail.text isEqualToString:@""] &&
+       ![self.profileName.text isEqualToString:@""]
+       )
+    {
+        PersistenceManager *persistenceManager = [PersistenceManager sharedInstance];
+        persistenceManager.profile.email = [self.profileEmail.text lowercaseString];
+        persistenceManager.profile.name = self.profileName.text;
+        persistenceManager.profile.avatar = UIImagePNGRepresentation([self.profileImage imageForState:UIControlStateNormal]);
+        persistenceManager.profile.secretImage = UIImagePNGRepresentation([self.secretImage imageForState:UIControlStateNormal]);
+        [persistenceManager saveAll];
+        
+        S2LRegister *profileRegister = [S2LRegister sharedInstance];
+        [profileRegister setCompleateBlock:^{
+            if (profileRegister.status == kRegisterReady) {
+                [self performSegueWithIdentifier:@"arSegue" sender:nil];
+            }
+            [loadingView removeFromSuperview];
+            loadingView = nil;
+            [self enableBtns:YES];
+        }];
+        [profileRegister setErrorBlock:^{
+            NSLog(@"***** REGISTER FAIL %i",profileRegister.status);
+            [loadingView removeFromSuperview];
+            loadingView = nil;
+            [self enableBtns:YES];
+        }];
+        [profileRegister checkAvatar:^(UIImage *img) {
+            [self.profileImage setImage:img forState:UIControlStateNormal];
+            [loadingView removeFromSuperview];
+            loadingView = nil;
+            [self enableBtns:YES];
+        }];
+        
+        
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"E-Mail" message:NSLocalizedString(@"user_email_alert", nil) delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+        
+        [loadingView stopAnimating];
+        [loadingView removeFromSuperview];
+        loadingView = nil;
+        [self enableBtns:YES];
+    }
+}
+
+-(void)restoreProfile {
+    if(![self.profileName.text isEqualToString:@""])
+    {
+        [self enableBtns:NO];
+        
+        __block UIActivityIndicatorView* loadingView = [[UIActivityIndicatorView alloc] init];
+        loadingView.frame = CGRectMake(self.restoreBtn.frame.origin.x + self.restoreBtn.frame.size.width - 36, self.restoreBtn.frame.origin.y+4, 30, 30);
+        [loadingView setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];
+        [loadingView startAnimating];
+        [self.scrollView addSubview:loadingView];
+        
+        PersistenceManager *persistenceManager = [PersistenceManager sharedInstance];
+        persistenceManager.profile.name = self.profileName.text;
+        persistenceManager.profile.secretImage = UIImagePNGRepresentation([self.secretImage imageForState:UIControlStateNormal]);
+        [persistenceManager saveAll];
+        
+        S2LRestore *profileRestore = [S2LRestore sharedInstance];
+        [profileRestore restoreProfile:^(NSDictionary* dict){
+            
+            PersistenceManager *persistentManager = [PersistenceManager sharedInstance];
+            NSString* profileEmail = persistentManager.profile.email;
+            NSString* profileName = persistentManager.profile.name;
+            UIImage* profileImg = [UIImage imageWithData:persistentManager.profile.avatar];
+            UIImage* secretImg = [UIImage imageWithData:persistentManager.profile.secretImage];
+            
+            [self.secretImage setImage:secretImg forState:UIControlStateNormal];
+            [self.profileImage setImage:profileImg forState:UIControlStateNormal];
+            self.profileEmail.text = profileEmail;
+            self.profileName.text = profileName;
+            
+            [loadingView removeFromSuperview];
+            loadingView = nil;
+            [self enableBtns:YES];
+            
+            [self performSegueWithIdentifier:@"arSegue" sender:nil];
+          
+        } error:^{
+            NSLog(@"************** RESTORE FAILED");
+            [loadingView removeFromSuperview];
+            loadingView = nil;
+            [self enableBtns:YES];
+        }];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Restore" message:@"To restore your profile you should selecte the secret image and type your name." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+        [self enableBtns:YES];
+    }
+}
+
+-(void)skipProfile
+{
+    
+    PersistenceManager *pm = [PersistenceManager sharedInstance];
+    pm.profile.skip = [NSNumber numberWithBool:YES];
+    [pm saveAll];
+    [self performSegueWithIdentifier:@"arSegue" sender:nil];
+}
+
+#pragma mark -
+#pragma mark Implementation UITextFieldDelegate Protocol
+
+// Remove the change made to the scrollView in textFieldShouldBeginEditing:
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.contentSize.width, self.scrollView.contentSize.height-200)];
+    [self.scrollView scrollsToTop];
+    return YES;
+}
+
+// Allow scrolling while using keyboard (enlarges scroll content by an amount roughly the size of the keyboard).
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.contentSize.width, self.scrollView.contentSize.height+200)];
+    [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y-140) animated:YES];
+    return YES;
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    
+}
+
+#pragma mark -
+#pragma mark Implementation UIImagePickerControllerDelegate Protocol
+
+// Puts the image picked into the imageView.
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    // Get from the picker.
+    UIImage* pickedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    pickedImage = [pickedImage imageByScalingToSize:imageScaleSize];
+    
+    PersistenceManager *pm = [PersistenceManager sharedInstance];
+    
+    if (selectedImage == self.profileImage) {
+         pm.profile.avatar = UIImagePNGRepresentation(pickedImage);
+    }else{
+         pm.profile.secretImage = UIImagePNGRepresentation(pickedImage);
+    }
+    
+    pm.profile.name = self.profileName.text;
+    pm.profile.email = self.profileEmail.text;
+    
+    [pm saveAll];
+   
+    
+    
+    if (DEBUG_VERBOSE) NSLog(@"s2lUserPreferencesViewController.imagePickerController: image.size=(%f, %f) after", pickedImage.size.width, pickedImage.size.height);
+    [selectedImage setImage:pickedImage forState:UIControlStateNormal];
+
+    // Cleanup.
+    if(!isIPad){
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }else{
+        [popover dismissPopoverAnimated:YES];
+    }
+}
+
+// Aborts the picking of an image.
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+@end
