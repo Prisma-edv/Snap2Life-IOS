@@ -5,44 +5,52 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>4E94AC9C-C7E4-436E-9936-D3B28B84EA7A</string>
+	<string>E6471A38-4295-4F9E-91A4-82BB0A142C06</string>
 	<key>IDESourceControlProjectName</key>
 	<string>snap2life3.5</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</key>
-		<string>https://github.com/snap2life/IOS.git</string>
 		<key>7F79FABF-B604-4572-85A1-3BCAC8A9D536</key>
-		<string>http://192.168.100.118/svn/mosesrep/gryphos/trunk/Snap2life_iOS_Premium2.5.5</string>
-		<key>ADEE738F-DAFC-407E-B368-830911C028E4</key>
 		<string>http://192.168.100.118/svn/mosesrep/gryphos/trunk/Snap2Life_iOS_Premium3.0_new</string>
+		<key>9E2A10B2-CF80-4747-A628-85EC3722A654</key>
+		<string>https://github.com/Prisma-edv/IOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Snap2Life_3.5/snap2life3.5.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</key>
-		<string>../../..</string>
 		<key>7F79FABF-B604-4572-85A1-3BCAC8A9D536</key>
-		<string>../../../../Snap2life_iOS_Premium2.5.5</string>
-		<key>ADEE738F-DAFC-407E-B368-830911C028E4</key>
 		<string>../../../../Snap2Life_iOS_Premium3.0_new</string>
+		<key>9E2A10B2-CF80-4747-A628-85EC3722A654</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
 		<key>7F79FABF-B604-4572-85A1-3BCAC8A9D536</key>
 		<string>http://192.168.100.118/svn/mosesrep</string>
-		<key>ADEE738F-DAFC-407E-B368-830911C028E4</key>
-		<string>http://192.168.100.118/svn/mosesrep</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/snap2life/IOS.git</string>
+	<string>https://github.com/Prisma-edv/IOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</string>
+	<string>9E2A10B2-CF80-4747-A628-85EC3722A654</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>gryphos/branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
+			<string>gryphos/tags</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>gryphos/trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7F79FABF-B604-4572-85A1-3BCAC8A9D536</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Digitalstrom_iOS_2.5</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
 			<string>gryphos/branches</string>
@@ -61,23 +69,9 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</string>
+			<string>9E2A10B2-CF80-4747-A628-85EC3722A654</string>
 			<key>IDESourceControlWCCName</key>
 			<string>IOS</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
-			<string>gryphos/branches</string>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.subversion</string>
-			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
-			<string>gryphos/tags</string>
-			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
-			<string>gryphos/trunk</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>ADEE738F-DAFC-407E-B368-830911C028E4</string>
-			<key>IDESourceControlWCCName</key>
-			<string>S2LAR_IOS_1.0</string>
 		</dict>
 	</array>
 </dict>

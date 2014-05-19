@@ -11,10 +11,10 @@
 #define kMAX_RES_IMAGE 400
 #define kREQUEST_IMAGE_KEY @"image"
 #define kREQUEST_METADATA_KEY @"metadata.xml"
-#define kSUBCAT_ID @"1"
-#define kSERVER_URL_API2 @"https://white.snap2life.de/modus/rest/api2/"
+#define kSUBCAT_ID @"demo"
+#define kSERVER_URL_API2 @"https://patriots.snap2life.de/modus/rest/api2/"
 /////////////////
-#define kINSERT_SUBCAT_KEY @"PORTAL"
+#define kINSERT_SUBCAT_KEY @"demo"
 #define kFEATUREGROUPS_VERSION 18
 #define kFEATUREGROUP_ID 1
 #define kFEATURE_ID 3
@@ -23,10 +23,10 @@
 //Package name is transmited on each request in an EXTRA field, this field is very important
 //for the server to recognise from which app the request is comming
 #define kPACKAGE_NAME @"de.prisma.snap2life"
-#define kAPP_VERSION @"3.5"
+#define kAPP_VERSION @"demo"
 //This text string will be transmitted on each request, it is the base64 encoded string
 //of the USERNAME:PASSWORD combination example "me:mypass".
-#define kBASE64_AUTH_API2 @"c25hcDJsaWZlOmtFc1NUSWZSSXhYNQ"
+#define kBASE64_AUTH_API2 @"ZGVtbzogZGVtbw=="
 
 //Request Headers and other variables
 #define kIMAGE_MULTIPART @"image"
