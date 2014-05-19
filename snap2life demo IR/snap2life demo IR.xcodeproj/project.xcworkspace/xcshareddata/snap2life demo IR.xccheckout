@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>3F463404-025F-48CE-B7B4-F454CDF76FA6</string>
+	<string>B724E7AF-0EC8-4C17-A6E4-AB2BDC6CA695</string>
 	<key>IDESourceControlProjectName</key>
 	<string>snap2life demo IR</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</key>
-		<string>https://github.com/snap2life/IOS.git</string>
+		<key>34774FF5-BF14-4C83-B163-9A7F5B1A602B</key>
+		<string>https://github.com/Prisma-edv/IOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>snap2life demo IR/snap2life demo IR.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</key>
+		<key>34774FF5-BF14-4C83-B163-9A7F5B1A602B</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/snap2life/IOS.git</string>
+	<string>https://github.com/Prisma-edv/IOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</string>
+	<string>34774FF5-BF14-4C83-B163-9A7F5B1A602B</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5541FDC4-C27A-4299-B7CB-6FD0C79713FB</string>
+			<string>34774FF5-BF14-4C83-B163-9A7F5B1A602B</string>
 			<key>IDESourceControlWCCName</key>
 			<string>IOS</string>
 		</dict>

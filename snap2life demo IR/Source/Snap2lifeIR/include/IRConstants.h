@@ -24,9 +24,7 @@
 //for the server to recognise from which app the request is comming
 #define kPACKAGE_NAME @"de.prisma.snap2life"
 #define kAPP_VERSION @"demo"
-//This text string will be transmitted on each request, it is the base64 encoded string
-//of the USERNAME:PASSWORD combination example "me:mypass".
-#define kBASE64_AUTH_API2 @"ZGVtbzogZGVtbw=="
+#define kBASE64_AUTH_API2 @"ZGVtbzpkZW1v"
 
 //Request Headers and other variables
 #define kIMAGE_MULTIPART @"image"
